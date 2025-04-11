@@ -30,12 +30,17 @@ e ampliem suas oportunidades no mercado de trabalho.
 <h3>Requisitos funcionais</h3>
  
 - RF01: O sistema deve permitir a criação de usuários
-- RF02: O sistema deve ter login e logout
+- RF02: O sistema deve ter logout
 - RF03: O sistema deve ter a função de recuperar senha por e-mail
-- RF04: O sistema deve gerar um certificado de conclusão simbólico
+- RF04: O sistema deve gerar um certificado de conclusão de curso simbólico
 - RF05: O sistema deve permitir efetuar a compra de assinaturas
 - RF06: O sistema deve permitir gerenciar a assinatura
 - RF07: O sistema deve mostrar o conteúdo da confeitaria
+- RF08: O sistema deve permitir a interação entre os usuários
+- RF09: O sistema deve permitir a escolha de cursos e módulos por parte do usuário
+- RF10: O sistema deve permitir a criação, edição e exclusão de conteúdo por parte do dono da aplicação
+- RF11: O sistema deve permitir a autorização do acesso dos usuários pelo administrador
+- RF12: O sistema deve permitir o login com email e senha, ou com login de outros provedores como Google e Microsoft
 
 <h2>💻Tecnologias</h2>
 <h3>Frontend</h3>
