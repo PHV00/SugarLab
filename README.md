@@ -19,13 +19,9 @@ e ampliem suas oportunidades no mercado de trabalho.
 - RNF08: O sistema deve ser desenvolvido com a linguagem de programação Java com o framework Spring boot para o lado servidor
 - RNF09: O sistema deve se utilizar de API’s Open Source para geração de boletos
 - RNF10: O sistema deve conter Integração Contínua e Entrega Contínua
-- RNF11: O sistema deve ter login com usuário e senha
 - RNF12: O software deve ter um sistema de hierarquia que diferencia usuários comuns de administradores
 - RNF13: O sistema deve ter checagem de conta em dois fatores
 - RNF14: O sistema deve ter seu banco de dados constituído em MySQL
-- RNF15: O sistema deve possuir uma tela de contato dos desenvolvedores
-- RNF16: O sistema deve possuir uma tela de contato da confeiteira
-- RNF17: O sistema deve permitir a criação, edição e exclusão de conteúdo por parte da confeiteira
  
 <h3>Requisitos funcionais</h3>
  
@@ -41,6 +37,11 @@ e ampliem suas oportunidades no mercado de trabalho.
 - RF10: O sistema deve permitir a criação, edição e exclusão de conteúdo por parte do dono da aplicação
 - RF11: O sistema deve permitir a autorização do acesso dos usuários pelo administrador
 - RF12: O sistema deve permitir o login com email e senha, ou com login de outros provedores como Google e Microsoft
+- RF13: O sistema deve conter uma tela, com relatos dos usuários, e eventos gastronômicos, fornecidos pelo cliente
+- RF14: O sistema deve conter uma tela, com informações como objetivo, missão valores e informações de  contado
+- RF15: O sistema deve permitir o cadastro de usuário com as informações nome, sobrenome ,email e senha
+- RF16: O sistema deve fornecer acesso a um canal de comunicação (Comunidade) pelo whatsapp
+- RF17: O sistema deve gerar uma fatura eletrônica para o pagamento do curso
 
 <h2>💻Tecnologias</h2>
 <h3>Frontend</h3>
