@@ -57,7 +57,7 @@ e ampliem suas oportunidades no mercado de trabalho.
 - MySQL
 
 <h3>Arquitetura</h3>
-- Monolítica
+- Monolítica: Considerando o escopo atual, a arquitetura monolítica é mais prática para ser implementada. O modelo que ela nos fornece compõe uma estrutura organizacional, simplificada e ágil, tornando-a mais adequada para a escalabilidade do projeto. Seguindo a corrente de aprendizado da disciplina de Arquitetura de Software, utilizamos o modelo de diagramação de arquitetura Model C4.
 
 <h2>📅Trello</h2>
 https://trello.com/invite/b/67d4c14ccca5e0a89dbe40f5/ATTI61b31df01d45fb63a86cd82cc445b3d6B62FFDA8/doce-conta
