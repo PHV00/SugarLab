@@ -7,38 +7,38 @@ on:
     paths:
       - 'frontend/**'
   workflow_dispatch:
-
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write   # Permite gerar o token OIDC para Azure
-      contents: read    # Permite ler o código do repositório
-
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '22.x'
-
-      - name: Install dependencies and build
-        run: |
+      - run: |
           cd frontend
           npm install
           npm run build
-
-      - name: Login to Azure
-        uses: azure/login@v2
+      - uses: actions/upload-artifact@v4
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4268CDD0AE3C4C60A8494F158509B6E2 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BE025CCA2B1949C195A878D3C2EE6C0D }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CBF05D33A74A4E848D823EFB882B8C0F }}
+          name: react-build
+          path: frontend/build
 
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v3
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: react-build
+          path: build
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
+      - uses: azure/webapps-deploy@v3
         with:
           app-name: 'sugarlab-frontend'
           slot-name: 'Production'
-          package: frontend/build
+          package: build
