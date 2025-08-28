@@ -24,7 +24,6 @@ jobs:
           cd frontend
           npm install
           npm run build
-          ls -l
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
