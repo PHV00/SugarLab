@@ -11,6 +11,10 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write   # Permite gerar o token OIDC para Azure
+      contents: read    # Permite ler o código do repositório
+
     steps:
       - uses: actions/checkout@v4
 
