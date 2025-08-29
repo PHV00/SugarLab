@@ -31,7 +31,6 @@ jobs:
           cd frontend
           npm install
           npm run build
-          ls -la build   # verifica se a pasta build existe
 
       # 4️⃣ Login no Azure usando OIDC
       - name: Login to Azure via OIDC
