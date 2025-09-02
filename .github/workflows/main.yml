@@ -66,10 +66,11 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CBF05D33A74A4E848D823EFB882B8C0F }}
 
       # 7. Publica a pasta dist para o App Service
+      - name: Criar ZIP do build
+        run: zip -r build.zip dist
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'sugarlab-frontend'
           slot-name: 'Production'
-          package: dist
-
+          package: build.zip
