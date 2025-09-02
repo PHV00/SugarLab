@@ -53,10 +53,6 @@ jobs:
           name: react-dist
           path: dist
 
-      - name: Verificar conteúdo após download
-        run: ls -l
-
-
       # 6. Faz login no Azure
       - name: Azure Login
         uses: azure/login@v2
@@ -65,11 +61,15 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BE025CCA2B1949C195A878D3C2EE6C0D }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CBF05D33A74A4E848D823EFB882B8C0F }}
 
+      - name: Mover arquivos do dist para raiz
+        run: |
+          mv dist/* .
+
       # 7. Publica a pasta dist para o App Service
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'sugarlab-frontend'
           slot-name: 'Production'
-          package: dist
+          package: .
 
