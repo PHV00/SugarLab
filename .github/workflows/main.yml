@@ -1,0 +1,70 @@
+name: Build and deploy React SPA to Azure Web App - sugarlab-frontend
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      # 1. Baixa o código do repositório
+      - uses: actions/checkout@v4
+
+      # 2. Instala Node.js com cache para acelerar builds
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      # 3. Instala dependências e gera o build (saída em dist/)
+      - name: Install and Build
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build
+
+      # 4. Faz upload apenas da pasta dist
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: react-dist
+          path: frontend/dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      # 5. Baixa o artefato dist
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: react-dist
+          path: dist
+
+      # 6. Faz login no Azure
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4268CDD0AE3C4C60A8494F158509B6E2 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_BE025CCA2B1949C195A878D3C2EE6C0D }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CBF05D33A74A4E848D823EFB882B8C0F }}
+
+      # 7. Publica a pasta dist para o App Service
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'sugarlab-frontend'
+          slot-name: 'Production'
+          package: dist
