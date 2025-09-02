@@ -53,6 +53,10 @@ jobs:
           name: react-dist
           path: dist
 
+      - name: Verificar conteúdo após download
+        run: ls -l dist
+
+
       # 6. Faz login no Azure
       - name: Azure Login
         uses: azure/login@v2
