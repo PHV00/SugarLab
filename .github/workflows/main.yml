@@ -54,7 +54,7 @@ jobs:
           path: dist
 
       - name: Verificar conteúdo após download
-        run: ls -l dist
+        run: ls -l
 
 
       # 6. Faz login no Azure
