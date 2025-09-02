@@ -68,3 +68,4 @@ jobs:
           app-name: 'sugarlab-frontend'
           slot-name: 'Production'
           package: ./dist
+          
