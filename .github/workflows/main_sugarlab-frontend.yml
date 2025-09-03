@@ -56,6 +56,10 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_499B4CD0A64D4D5E9DD410CFDD2E9CF1 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_017B8B659F554008B69CF64809DAFCDC }}
 
+      - name: Mover arquivos do dist para raiz
+        run: |
+          mv dist/* .
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
