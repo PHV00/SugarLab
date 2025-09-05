@@ -50,10 +50,6 @@ jobs:
       contents: read
 
     steps:
-      - name: Clean wwwroot before deploy
-        run: |
-          az webapp deployment delete --name sugarlab-frontend --resource-group SugarLab --slot Production --subscription 11fd414d-c028-448d-b738-1c4074176884
-
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
