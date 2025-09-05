@@ -1,7 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy Node.js app to Azure Web App - sugarlab-frontend
+name: Build and deploy React SPA to Azure Web App - sugarlab-frontend
 
 on:
   push:
@@ -13,30 +10,43 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read #This is required for actions/checkout
+      contents: read
 
     steps:
+      # 1. Clonar o código
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js version
+      # 2. Configurar Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22.x'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
 
-      - name: npm install, build
-        working-directory: frontend  
+      # 3. Instalar dependências e build
+      - name: Install and Build
+        working-directory: frontend
         run: |
-          npm install
-          npm run build --if-present
+          npm ci
+          npm run build
 
+      # 4. Copiar nginx.conf para dentro de dist
       - name: Copy nginx.conf
         run: cp frontend/nginx.conf frontend/dist/nginx.conf
 
+      # 5. Criar ZIP com conteúdo de dist (sem incluir a pasta dist)
+      - name: Package build for deploy
+        run: |
+          cd frontend/dist
+          zip -r ../../build.zip .
+
+      # 6. Fazer upload do artefato
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: react-dist
-          path: ./frontend/dist
+          name: react-build
+          path: frontend/build.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,24 +56,25 @@ jobs:
       contents: read
 
     steps:
+      # 7. Baixar artefato do build
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: react-dist
-          path: ./frontend/dist
-      
-      - name: Login to Azure
+          name: react-build
+          path: ./build
+
+      # 8. Login no Azure
+      - name: Azure Login
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B9CBFE66D8254C659F688D4D8C3E674C }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_499B4CD0A64D4D5E9DD410CFDD2E9CF1 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_017B8B659F554008B69CF64809DAFCDC }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
 
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
+      # 9. Deploy do ZIP para o App Service
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'sugarlab-frontend'
           slot-name: 'Production'
-          package: ./frontend/dist
-          
+          package: ./build/build.zip
