@@ -36,7 +36,7 @@ jobs:
           path: |
             frontend/dist
             frontend/nginx.conf
-            
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -58,9 +58,8 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_499B4CD0A64D4D5E9DD410CFDD2E9CF1 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_017B8B659F554008B69CF64809DAFCDC }}
 
-      - name: Mover arquivos do dist para raiz
-        run: |
-          mv dist/* .
+      - name: Copy nginx.conf
+        run: cp frontend/nginx.conf frontend/dist/nginx.conf
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -68,5 +67,5 @@ jobs:
         with:
           app-name: 'sugarlab-frontend'
           slot-name: 'Production'
-          package: .
+          package: ./frontend/dist
           
