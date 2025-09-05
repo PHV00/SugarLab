@@ -29,6 +29,9 @@ jobs:
           npm install
           npm run build --if-present
 
+      - name: Copy nginx.conf
+        run: cp frontend/nginx.conf frontend/dist/nginx.conf
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
@@ -57,9 +60,6 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B9CBFE66D8254C659F688D4D8C3E674C }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_499B4CD0A64D4D5E9DD410CFDD2E9CF1 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_017B8B659F554008B69CF64809DAFCDC }}
-
-      - name: Copy nginx.conf
-        run: cp frontend/nginx.conf frontend/dist/nginx.conf
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
