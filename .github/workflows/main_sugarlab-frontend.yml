@@ -39,7 +39,7 @@ jobs:
       - name: Package build for deploy
         run: |
           cd frontend/dist
-          zip -r ../../build.zip .
+          zip -r ../build.zip .
 
       # 6. Fazer upload do artefato
       - name: Upload build artifact
