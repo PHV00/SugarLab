@@ -40,6 +40,8 @@ jobs:
         run: |
           cd frontend/dist
           zip -r ../build.zip .
+          cd ..
+          ls -l
 
       # 6. Fazer upload do artefato
       - name: Upload build artifact
