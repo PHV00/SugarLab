@@ -34,6 +34,7 @@ jobs:
       - name: Package build for deploy
         run: |
           cd frontend/dist
+          ls -l
           zip -r ../build.zip .
 
       - name: Upload build artifact
