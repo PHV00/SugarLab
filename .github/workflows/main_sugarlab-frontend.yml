@@ -28,13 +28,9 @@ jobs:
           npm ci
           npm run build
 
-      # - name: Copy nginx.conf to dist before zip
-      #   run: cp frontend/nginx.conf frontend/dist/nginx.conf
-
       - name: Package build for deploy
         run: |
           cd frontend/dist
-          ls -l
           zip -r ../build.zip .
 
       - name: Upload build artifact
