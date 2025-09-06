@@ -64,4 +64,3 @@ https://trello.com/invite/b/67d4c14ccca5e0a89dbe40f5/ATTI61b31df01d45fb63a86cd82
 
 <h2>🎨Figma</h2>
 https://www.figma.com/design/FHMYWRYc8rWzDR04ElpkyG/SugarLab?node-id=0-1&t=0tpODencIEp8VwKe-1 
-
