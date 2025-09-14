@@ -1,6 +1,23 @@
-#root{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background-color: #192927;
+  color: #fff;
+}
+/*registro da fonte */
+@font-face {
+  font-family: 'Glacial';
+  src: url('/fonts/glacial-indifference.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*aplica a fonte globalmente */
+:root { --font-fallback: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+body { font-family: 'Glacial', var(--font-fallback); }
+
+/* utilidade opcional p/ usar em pontos específicos indicado para alguns locais durante o código*/
+@layer utilities {
+  .font-glacial { font-family: 'Glacial', var(--font-fallback); }
 }
