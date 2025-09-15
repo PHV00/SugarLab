@@ -1,0 +1,42 @@
+.carrossel-home {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 360px;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    background-color: rgba(23, 23, 23, 0.8);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s;
+}
+
+.carrossel-home:hover,
+.carrossel-home:focus-within{
+    transform: scale(1.01);
+}
+
+.carrossel-home-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.carrossel-home-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    display: grid;
+    place-items: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: rbg(23, 23, 23);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(6px);
+}
+
+.icon-svg {
+    height: 1.25rem;
+    width: 1.25rem;
+}
