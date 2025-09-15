@@ -2,13 +2,14 @@ import './App.css'
 import Header from './components/header/Header'
 import Courses from './pages/Courses'
 import Footer from './components/Footer/Footer'
+import HomePage from './pages/HomePage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 function App() {
 
   return (
     <>
       <Header/>
-      <Courses />
+      <HomePage />
       <Footer/>
       {/* <BrowserRouter>
         <Header/>

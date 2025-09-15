@@ -11,7 +11,9 @@ const Header = () => {
 
     return(
         <nav id='headerClass' className='flex justify-between relative'>
-            <img src={logo} alt="logo" className='w-2/12 lg:w-1/12'/>
+            <NavLink to="/">
+                <img src={logo} alt="logo" className='w-2/12 lg:w-1/12 cursor-pointer'/>
+            </NavLink>
             
             {/* mobile-format */}
             <div id="mobile-format" className='lg:hidden'>
@@ -34,7 +36,7 @@ const Header = () => {
             <div className="hidden lg:flex gap-12">
                 <NavLink className="navOptions" to={"/"}>{navOptions[0]}</NavLink>
                 <NavLink className="navOptions" to={"/"}>{navOptions[1]}</NavLink>
-                <NavLink className="navOptions" to={"/"}>{navOptions[2]} Nós</NavLink>
+                <NavLink className="navOptions" to={"/"}>{navOptions[2]}</NavLink>
                 <NavLink className="navOptions" to={"/"}>{navOptions[3]}</NavLink>
             </div>
             <div className="userBtns hidden lg:flex gap-2">
