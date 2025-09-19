@@ -24,8 +24,7 @@ public class UserService {
         if(userDto.getNome() == "" || userDto.getEmail() == "" || userDto.getSenha() == ""){
             throw new EntityExistsException("User with no datas!"); 
         }
-        
-        System.out.println("BANANA");
+
         return userRespository.save(UserMapper.toUsurio(userDto));
     }
 

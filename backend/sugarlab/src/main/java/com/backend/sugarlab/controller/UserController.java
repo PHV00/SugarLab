@@ -27,11 +27,9 @@ public class UserController {
     @PostMapping("/v1/newUser")
     public ResponseEntity<Usuario> createUser(@RequestBody UserRegisterDto usuarioDto){
         try{
-            System.out.println("AQUI");
             userService.createUser(usuarioDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(UserMapper.toUsurio(usuarioDto));
         }catch(Exception exception){
-            System.out.println("Erro: "+exception);
             return ResponseEntity.status(HttpStatus.CONFLICT).body(UserMapper.toUsurio(usuarioDto));
         }
     }
