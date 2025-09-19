@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import './courseCard.css'
 
 export default function CourseCard({ course, onMore }) {
   const { title, highlights = [], thumbnailUrl } = course || {};
@@ -12,7 +13,7 @@ export default function CourseCard({ course, onMore }) {
       "
     >
       {/* Texto */}
-      <div className="p-6 md:p-7">
+      <div id="titles" className="p-6 md:p-7">
         <h3 className="font-semibold tracking-wide text-[28px] md:text-[34px] leading-tight">
           {title}
         </h3>
@@ -27,10 +28,11 @@ export default function CourseCard({ course, onMore }) {
 
         <button
           type="button"
+          id="maisButton"
           onClick={() => onMore?.(course)}
           className="
-            mt-4 inline-flex items-center gap-2 rounded-xl bg-[#192927]
-            px-4 py-2 text-white shadow-[0_3px_0_rgba(0,0,0,.35)]
+            mt-4 inline-flex items-center gap-2
+            px-4 py-2 text-white shadow-[0_3px_0_rgba(0,0,0,.35)] cursor-pointer
             hover:bg-[#203533] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#192927] focus-visible:ring-offset-2 focus-visible:ring-offset-white
           "
         >
