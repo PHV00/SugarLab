@@ -55,6 +55,7 @@ export default function Courses() {
   return (
     <section className="mx-auto max-w-6xl px-4 pt-8 pb-12">
       <CourseGrid courses={courses} isLoading={loading} onMore={setSelected} />
+      
       {selected && <CourseDetailsModal course={selected} onClose={() => setSelected(null)} />}
     </section>
   );
