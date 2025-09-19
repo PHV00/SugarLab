@@ -1,4 +1,4 @@
-package com.backend.sugarlab.Mapper;
+package com.backend.sugarlab.mapper;
 
 import com.backend.sugarlab.DTO.UserRegisterDto;
 import com.backend.sugarlab.entity.Usuario;
