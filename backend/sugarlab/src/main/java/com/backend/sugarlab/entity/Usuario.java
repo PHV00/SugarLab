@@ -18,12 +18,11 @@ public class Usuario {
     private int id;
 
     private String nome;
+    private String sobrenome;
     private String email;
     private String senha;
     private String telefone;
-    private String endereco;
     private Boolean ehAdmin;
-    private int ativo;
 
     @ManyToOne
     @JoinColumn(name = "assinatura_id")

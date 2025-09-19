@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.sugarlab.entity.Usuario;
-import com.backend.sugarlab.mapper.UserMapper;
+import com.backend.sugarlab.DTO.UserRegisterDto;
+import com.backend.sugarlab.Mapper.UserMapper;
 import com.backend.sugarlab.repository.UserRespository;
 import com.backend.sugarlab.service.UserService;
 
@@ -20,16 +21,18 @@ public class UserController {
     @Autowired
     UserRespository userRespository;
 
+    @Autowired
     UserService userService;
 
     @PostMapping("/v1/newUser")
-    public ResponseEntity<Usuario> createUser(@RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> createUser(@RequestBody UserRegisterDto usuarioDto){
         try{
-            userService.createUser(UserMapper.toDTO(usuario));
-
-            return ResponseEntity.status(HttpStatus.CREATED).body(usuario);
+            System.out.println("AQUI");
+            userService.createUser(usuarioDto);
+            return ResponseEntity.status(HttpStatus.CREATED).body(UserMapper.toUsurio(usuarioDto));
         }catch(Exception exception){
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(usuario);
+            System.out.println("Erro: "+exception);
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(UserMapper.toUsurio(usuarioDto));
         }
     }
 }
