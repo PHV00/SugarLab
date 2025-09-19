@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
 
-import './header.css'
+import './headerStaff.css'
 import logo from '../../assets/image/SugarLab.png';
 import HamburguerMenu from '../Icons/HamburguerMenu';
 import { useState } from 'react';
 
-const Header = () => {
-    const navOptions = [ 'Cursos', 'Comunidade', 'Sobre Nós', 'Assinatura', 'Cadastro', 'Login']
+const HeaderStaff = () => {
+    const navOptions = [ 'Cursos', 'Comunidade', 'Sobre Nós', 'Assinatura']
     const [mobileMenuClicked, setMobileMenuClicked] = useState(false)
 
     return(
@@ -38,11 +38,10 @@ const Header = () => {
                 <NavLink className="navOptions" to={"/"}>{navOptions[3]}</NavLink>
             </div>
             <div className="userBtns hidden lg:flex gap-2">
-                <button className='btnUser w-20 text-white cursor-pointer'>Login</button>
-                <button className='btnUser w-20 text-white cursor-pointer'>Register</button>
+                <button className='btnUser w-20 text-white cursor-pointer'>Administração</button>
             </div>
         </nav>
     );
 }
 
-export default Header;
+export default HeaderStaff;
