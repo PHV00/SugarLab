@@ -1,10 +1,12 @@
 package com.backend.sugarlab.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.backend.sugarlab.DTO.UserRegisterDto;
-import com.backend.sugarlab.Mapper.UserMapper;
+import com.backend.sugarlab.mapper.UserMapper;
 import com.backend.sugarlab.entity.Usuario;
 import com.backend.sugarlab.repository.UserRespository;
 
@@ -26,6 +28,10 @@ public class UserService {
         }
 
         return userRespository.save(UserMapper.toUsurio(userDto));
+    }
+
+    public List<Usuario> getUsers(){
+        return userRespository.findAll();
     }
 
 }
