@@ -1,9 +1,12 @@
 package com.backend.sugarlab.service;
 
+import org.springframework.stereotype.Service;
+
 import com.backend.sugarlab.DTO.LoginRequestDTO;
 import com.backend.sugarlab.entity.Usuario;
 import com.backend.sugarlab.repository.UserRespository;
 
+@Service
 public class LoginService {
     
     private final UserRespository userRespository;
