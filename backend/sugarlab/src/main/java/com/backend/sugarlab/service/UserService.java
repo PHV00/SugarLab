@@ -1,6 +1,9 @@
 package com.backend.sugarlab.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.backend.sugarlab.DTO.UserRegisterDto;
@@ -16,8 +19,12 @@ public class UserService {
     @Autowired
     UserRespository userRespository;
 
-    public UserService(UserRespository userRespository){
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    public UserService(UserRespository userRespository, PasswordEncoder passwordEncoder){
         this.userRespository = userRespository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Usuario createUser(UserRegisterDto userDto){
@@ -25,7 +32,16 @@ public class UserService {
             throw new EntityExistsException("User with no datas!"); 
         }
 
+        String userRawPassord = userDto.getSenha();
+        String encodedPassword = passwordEncoder.encode(userRawPassord);
+
+        userDto.setSenha(encodedPassword);
+
         return userRespository.save(UserMapper.toUsurio(userDto));
+    }
+
+    public List<Usuario> getUsers(){
+        return userRespository.findAll();
     }
 
 }

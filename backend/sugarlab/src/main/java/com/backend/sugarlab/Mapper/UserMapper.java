@@ -19,7 +19,7 @@ public class UserMapper {
     public static Usuario toUsurio(UserRegisterDto userDto) {
         Usuario usuario = new Usuario();
         usuario.setNome(userDto.getNome());
-        usuario.setNome(userDto.getSobrenome());
+        usuario.setSobrenome(userDto.getSobrenome());
         usuario.setEmail(userDto.getEmail());
         usuario.setSenha(userDto.getSenha());
         usuario.setEhAdmin(userDto.getEhAdmin());

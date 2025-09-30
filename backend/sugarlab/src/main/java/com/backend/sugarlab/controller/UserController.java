@@ -1,8 +1,12 @@
 package com.backend.sugarlab.controller;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +35,15 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CREATED).body(UserMapper.toUsurio(usuarioDto));
         }catch(Exception exception){
             return ResponseEntity.status(HttpStatus.CONFLICT).body(UserMapper.toUsurio(usuarioDto));
+        }
+    }
+
+    @GetMapping("/v1/getUsers")
+    public ResponseEntity<List<Usuario>> getAllUsers(){
+        try{
+            return ResponseEntity.ok(userService.getUsers());
+        }catch(Exception exception){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.emptyList());
         }
     }
 }
