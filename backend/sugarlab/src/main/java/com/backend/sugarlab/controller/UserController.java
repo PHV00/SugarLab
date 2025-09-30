@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.sugarlab.entity.Usuario;
 import com.backend.sugarlab.DTO.UserRegisterDto;
-import com.backend.sugarlab.mapper.UserMapper;
+import com.backend.sugarlab.Mapper.UserMapper;
 import com.backend.sugarlab.repository.UserRespository;
 import com.backend.sugarlab.service.UserService;
 
@@ -34,7 +34,6 @@ public class UserController {
             userService.createUser(usuarioDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(UserMapper.toUsurio(usuarioDto));
         }catch(Exception exception){
-            System.out.println("Error: "+exception);
             return ResponseEntity.status(HttpStatus.CONFLICT).body(UserMapper.toUsurio(usuarioDto));
         }
     }
