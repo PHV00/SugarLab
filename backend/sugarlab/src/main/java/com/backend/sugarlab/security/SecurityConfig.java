@@ -16,6 +16,7 @@ public class SecurityConfig {
     }
 
     //Metódo que desabilita a segurança para testar os endpoints
+    /*
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -28,4 +29,5 @@ public class SecurityConfig {
 
         return http.build();
     }
+    */
 }
