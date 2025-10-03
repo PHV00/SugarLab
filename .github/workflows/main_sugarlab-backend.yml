@@ -24,15 +24,24 @@ jobs:
           java-version: '17'
           distribution: 'microsoft'
 
+      # - name: Build with Maven
+      #   run: mvn clean install
+      #   working-directory: ${{ github.workspace }}/backend
+        
+      # - name: Upload artifact for deployment job
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: java-app
+      #     path: '${{ github.workspace }}/target/*.war'
+      
       - name: Build with Maven
-        run: mvn clean install
-        working-directory: ${{ github.workspace }}/backend
+        run: mvn clean package -DskipTests
         
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.war'
+          path: '${{ github.workspace }}/target/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,13 +62,22 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_51C9A66BB0BE4905BABC47C9A77A45B5 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_8D1F901571C34BB4A31DB9FE8B1F7190 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_96E848B053024880831E0A4AEE9819F0 }}
-
+          
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'sugarlab-backend'
           slot-name: 'Production'
-          package: '*.war'
+          package: '*.jar'
+
+      # - name: Deploy to Azure Web App
+      #   id: deploy-to-webapp
+      #   uses: azure/webapps-deploy@v3
+      #   with:
+      #     app-name: 'sugarlab-backend'
+      #     slot-name: 'Production'
+      #     package: '*.war'
           
+
 
