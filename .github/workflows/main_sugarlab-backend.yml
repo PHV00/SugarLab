@@ -15,21 +15,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Java version
+      - name: Configurar versão do Java
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'microsoft'
 
-      - name: Build with Maven
+      - name: Build com Maven
         run: mvn clean package -DskipTests
         working-directory: ./backend/sugarlab
 
-      - name: Upload artifact for deployment job
+      - name: Preparar artefato para deploy
+        run: |
+          mkdir -p build-output
+          cp ./backend/sugarlab/target/*.jar build-output/app.jar
+          cd build-output && zip app.zip app.jar
+
+      - name: Upload artefato para job de deploy
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: backend/sugarlab/target/*.jar
+          path: build-output/app.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -39,23 +45,23 @@ jobs:
       contents: read
 
     steps:
-      - name: Download artifact from build job
+      - name: Download artefato do job de build
         uses: actions/download-artifact@v4
         with:
           name: java-app
-          path: ./java-app   # ensure folder is consistent
+          path: ./java-app
 
-      - name: Login to Azure
+      - name: Login no Azure
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_51C9A66BB0BE4905BABC47C9A77A45B5 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_8D1F901571C34BB4A31DB9FE8B1F7190 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_96E848B053024880831E0A4AEE9819F0 }}
 
-      - name: Deploy to Azure Web App
+      - name: Deploy para Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'sugarlab-backend'
-          slot-name: 'production' # lowercase
-          package: ./java-app/*.jar  # <-- fixed path
+          slot-name: 'production' # sempre minúsculo
+          package: ./java-app/app.zip
