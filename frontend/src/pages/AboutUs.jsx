@@ -1,5 +1,5 @@
 import "./AboutUs.css"
-import CatolicaLogo from "../assets/image/CatolicaLogo.png"
+import CatolicaLogo from "../assets/image/LogoCatolica.png"
 
 export default function AboutUs() {
     return (
@@ -27,6 +27,7 @@ export default function AboutUs() {
                         <h3>Orientador do projeto:</h3>
                         <ul className="about-orientador">
                             <li>LUIZ CARLOS CAMARGO</li>
+                            <li>CLAUDINEI DIAS</li>
                         </ul>
                     </div>
 

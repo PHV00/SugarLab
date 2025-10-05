@@ -38,7 +38,7 @@ const Header = () => {
                 <NavLink className="navOptions" to={"/assinatura"}>{navOptions[3]}</NavLink>
             </div>
             <div className="userBtns hidden lg:flex gap-2">
-                <button className='btnUser w-20 text-white cursor-pointer' onClick={() => navigate("login")}>Login</button>
+                <button className='btnUser w-20 text-white cursor-pointer' onClick={() => navigate("/login")}>Login</button>
                 <button className='btnUser w-20 text-white cursor-pointer' onClick={() => navigate("/registro")}>Register</button>
             </div>
         </nav>
