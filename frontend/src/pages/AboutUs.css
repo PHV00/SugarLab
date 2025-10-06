@@ -1,14 +1,14 @@
 :root {
-    --bg: #1E1E1E;
+    --bg: #1e1e1e;
     --card: #ffffff;
     --ink: #1c1c1c;
-    --stroke: rbga(0, 0, 0, 0.06);
+    --stroke: rgba(0, 0, 0, 0.06);
     --text-muted: #2b2b2b;
 }
 
 .about {
     min-height: 100vh;
-    background: var(--bg);
+    background-color: var(--bg);
     color: #fff;
     display: flex;
     align-items: flex-start;
@@ -21,7 +21,7 @@
     background: var(--card);
     color: var(--ink);
     border-radius: 28px;
-    border: 1px solid var(--stroke);
+    /* border: 1px solid var(--stroke); */
     box-shadow: 0 22px 44px rgba(0, 0, 0, 0.22);
     padding: clamp(1.5rem, 3.2vw, 2.75rem);
     margin: 2rem auto 0;
