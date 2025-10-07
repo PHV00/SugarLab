@@ -1,14 +1,14 @@
 :root {
     --bg: #1E1E1E;
     --card: #ffffff;
-    --ink: #1c1c1c;
+    --ink: #111;
     --muted: #2b2b2b;
-    --cta:#1e2e3a;
+    --cta:#1e2e2a;
 }
 
 .subscription {
     min-height: 100vh;
-    background-color: var(--bg);
+    background: var(--bg);
     color: #fff;
     display: flex;
     justify-content: center;
@@ -28,61 +28,64 @@
     background: var(--card);
     color: var(--ink);
     border-radius: 28px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
-    padding: clamp(1.25rem, 3vw, 2rem);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, .30);
+    padding: clamp(1.25rem, 2.8vw, 2.25rem);
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: clamp(1rem, 3vw, 2rem);
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(1rem, 2.2vw, 1.75rem);
+    align-items: center;
 }
 
 .subscription-left h1 {
-    font-size: calmp(1.8rem, 3vw, 2.2rem);
+    font-size: clamp(2.2rem, 4.2vw, 3rem);
     font-weight: 700;
-    margin: .25rem 0 1rem;
+    line-height: 1.18;
+    margin: 0 0 1rem;
 }
 
 .subscription-left p {
     color: var(--muted);
-    font-size: clmap(1rem, 1.25vw, 1.1rem);
-    line-height: 1.8;
-    max-width: 44ch;
+    font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+    line-height: 1.9;
+    max-width: 46ch;
 }
 
 .subscription-price {
     display: flex;
     align-items: baseline;
     gap: .75rem;
-    margin-top: .25rem;
+    margin-top: .5rem;
 }
 
 .subscription-price-amount {
-    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
     font-weight: 600;
-    letter-spacing: .5px;
+    letter-spacing: .2rem;
 }
 
 .subscription-price-split {
-    font-size: clamp(.9rem, 1.2vw, 1rem);
-    color: #444;
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+    color: #4b4b4b;
     text-transform: uppercase;
 }
 
 .subscription-period {
-    margin-top: .4rem;
-    font-size: clamp(.95rem, 1.1vw, 1rem);
-    color: #444;
+    margin-top: .5rem;
+    font-size: clamp(.95rem, 1.1vw, 1.05rem);
+    color: #4b4b4b;
 }
 
 .subscription-logo {
-    letter-spacing: .22rem;
+    letter-spacing: .28em;
     font-weight: 300;
 }
 
 .subscription-button {
     margin-top: 1rem;
     width: 100%;
-    max-width: 540px;
-    height: 40px;
+    max-width: 520px;
+    height: 46px;
+    font-size: 0.98rem;
     border: none;
     border-radius: 8px;
     background: var(--cta);
