@@ -6,7 +6,7 @@ import HamburguerMenu from '../Icons/HamburguerMenu';
 import { useState } from 'react';
 
 const HeaderStaff = () => {
-    const navOptions = [ 'Cursos', 'Comunidade', 'Sobre Nós', 'Assinatura']
+    const navOptions = ['Cursos', 'Comunidade', 'Sobre Nós', 'Assinatura']
     const [mobileMenuClicked, setMobileMenuClicked] = useState(false)
 
     return(
