@@ -10,7 +10,7 @@ function App() {
     <>
       <Header/>
       <Home />
-      <Courses />
+      {/*<Courses />*/}
       <Footer/>
       {/* <BrowserRouter>
         <Header/>
