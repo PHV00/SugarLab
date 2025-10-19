@@ -1,22 +1,27 @@
-import './App.css'
-import Header from './components/header/Header'
-import Courses from './pages/Courses'
-import Footer from './components/Footer/Footer'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-function App() {
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
+import Courses from "./pages/Courses.jsx";
+import AdminHome from "./pages/admin/AdminHome.jsx";            // ✅ relativo
+import AdminCoursesList from "./pages/admin/AdminCoursesList.jsx";
+import AdminCourseForm from "./pages/admin/AdminCourseForm.jsx";
+
+export default function App() {
   return (
-    <>
-      <Header/>
-      <Courses />
-      <Footer/>
-      {/* <BrowserRouter>
-        <Header/>
-        <Routes>
-        </Routes>
-      </BrowserRouter> */}
-    </>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        {/* Público */}
+        <Route path="/" element={<Navigate to="/cursos" replace />} />
+        <Route path="/cursos" element={<Courses />} />
 
-export default App
+        {/* Admin provisório + CRUD */}
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="/admin/cursos" element={<AdminCoursesList />} />
+        <Route path="/admin/cursos/novo" element={<AdminCourseForm />} />
+        <Route path="/admin/cursos/:id/editar" element={<AdminCourseForm />} />
+
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/cursos" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
