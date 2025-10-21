@@ -33,8 +33,6 @@ public class SecurityConfig {
             .and()
             .authorizeHttpRequests()
                 .requestMatchers(
-                    "/user/v1/newUser",
-                    "/api/login",
                     "/alimentos/v1/**",
                     "/receitas/v1/**",
                     "/auth/**"
