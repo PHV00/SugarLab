@@ -21,6 +21,7 @@ public class Modalidade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    private String nome;
     private String descricao;
 
     @OneToMany(mappedBy = "modalidade", cascade = CascadeType.ALL, orphanRemoval = true)

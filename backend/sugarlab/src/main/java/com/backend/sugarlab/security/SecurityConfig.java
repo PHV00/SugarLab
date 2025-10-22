@@ -17,21 +17,25 @@ public class SecurityConfig {
 
     //Metódo que desabilita a segurança para testar os endpoints
     
-        // @Bean
-        // public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        //     http
-        //         .csrf().disable()
-        //         .authorizeHttpRequests()
-        //             .requestMatchers(
-        //                 "/user/v1/newUser",
-        //                 "/api/login",
-        //                 "/alimentos/v1/*",
-        //                 "/receitas/v1/*"
-        //                 ).permitAll()
-        //             .anyRequest().authenticated()
-        //         .and()
-        //         .httpBasic();
+        @Bean
+        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+            http
+                .csrf().disable()
+                .authorizeHttpRequests()
+                    .requestMatchers(
+                        "/user/v1/newUser",
+                        "/api/login",
+                        "/alimentos/v1/*",
+                        "/receitas/v1/*",
+                        "/cursos/v1/*",
+                        "/assinaturas/v1/*",
+                        "/modalidades/v1/*",
+                        "/pagamentos/v1/*"
+                        ).permitAll()
+                    .anyRequest().authenticated()
+                .and()
+                .httpBasic();
 
-        //     return http.build();
-        // }
+            return http.build();
+        }
 }

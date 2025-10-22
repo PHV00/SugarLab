@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.backend.sugarlab.DTO.AssinaturaDTO;
-import com.backend.sugarlab.DTO.CursoDTO;
 import com.backend.sugarlab.Mapper.AssinaturaMapper;
-import com.backend.sugarlab.Mapper.CursoMapper;
 import com.backend.sugarlab.entity.Assinatura;
 import com.backend.sugarlab.entity.Curso;
 import com.backend.sugarlab.entity.Usuario;
