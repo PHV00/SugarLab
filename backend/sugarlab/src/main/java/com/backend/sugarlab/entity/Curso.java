@@ -3,10 +3,12 @@ package com.backend.sugarlab.entity;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.hibernate.annotations.ManyToAny;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -40,6 +42,9 @@ public class Curso {
     @ManyToOne
     @JoinColumn(name = "modalidade_id")
     private Modalidade modalidade;
+
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Assinatura> assinaturas;
 
     public Curso() {}
 }
