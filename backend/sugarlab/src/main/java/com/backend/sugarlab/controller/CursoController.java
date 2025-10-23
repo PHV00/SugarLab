@@ -84,14 +84,20 @@ public class CursoController {
     public ResponseEntity<String> uploadVideo(@RequestParam("file") MultipartFile file) {
         try {
             String nomeArquivo = file.getOriginalFilename();
-            Path caminho = Paths.get("uploads/videos/" + nomeArquivo);
+            Path pasta = Paths.get("backend/sugarlab/src/main/java/com/backend/sugarlab/uploads/videos/"); // Cria dentro do diretório do projeto
+            Files.createDirectories(pasta); // Garante que a pasta exista
+
+            Path caminho = pasta.resolve(nomeArquivo);
             Files.copy(file.getInputStream(), caminho, StandardCopyOption.REPLACE_EXISTING);
 
-            String urlVideo = "/uploads/videos/" + nomeArquivo;
+            String urlVideo = "backend/sugarlab/src/main/java/com/backend/sugarlab/uploads/videos/" + nomeArquivo;
             return ResponseEntity.ok(urlVideo);
+
         } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao fazer upload do vídeo");
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                .body("Erro ao fazer upload do vídeo: " + e.getMessage());
         }
-    }
+}
 
 }
