@@ -30,6 +30,7 @@ public class Curso {
     private Time horario;
     private float carga_horaria;
     private boolean status;
+    private String url_video;
 
     @ManyToOne
     @JoinColumn(name = "receita_id")

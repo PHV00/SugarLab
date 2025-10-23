@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 import com.backend.sugarlab.DTO.CursoDTO;
 import com.backend.sugarlab.Mapper.CursoMapper;
 import com.backend.sugarlab.entity.Curso;
+import com.backend.sugarlab.entity.Modalidade;
+import com.backend.sugarlab.entity.Receita;
 import com.backend.sugarlab.repository.CursoRepository;
+import com.backend.sugarlab.repository.ModalidadeRepository;
+import com.backend.sugarlab.repository.ReceitaRepository;
 
 @Service
 public class CursoService {
@@ -16,10 +20,22 @@ public class CursoService {
     @Autowired
     CursoRepository cursoRepository;
 
+    @Autowired
+    ModalidadeRepository modalidadeRepository;
+
+    @Autowired
+    ReceitaRepository receitaRepository;
+
     public Curso criarCurso(CursoDTO dto){
-        if(dto.nome().isEmpty() || dto.descricao().isEmpty() || dto.imagem().isEmpty()) throw new IllegalArgumentException("Todos os campos devem ser preenchidos!");
+        Modalidade modalidade = modalidadeRepository.findById(dto.modalidade().getId())
+            .orElseThrow(() -> new IllegalArgumentException("Modalidade não encontrada!"));
         
-        return cursoRepository.save(CursoMapper.toCurso(dto));    
+        Receita receita = receitaRepository.findById(dto.receita().getId())
+            .orElseThrow(() -> new IllegalArgumentException("Receita não encontrada!"));
+        
+        Curso curso = CursoMapper.toCurso(dto, modalidade, receita);
+
+        return cursoRepository.save(curso);
     }
 
     public List<Curso> resgatarTodosCursos(){
@@ -44,6 +60,9 @@ public class CursoService {
         existente.setHorario(dto.horario());
         existente.setCarga_horaria(dto.carga_horaria());
         existente.setStatus(dto.status());
+        existente.setUrl_video(dto.url_video());
+        existente.setModalidade(dto.modalidade());
+        existente.setReceita(dto.receita());
 
         return cursoRepository.save(existente);
     }
