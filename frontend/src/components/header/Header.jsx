@@ -11,7 +11,7 @@ const Header = () => {
 
     return(
         <nav id='headerClass' className='flex justify-between relative'>
-            <img src={logo} alt="logo" className='w-2/12 lg:w-1/12'/>
+            <NavLink id="mainLogoHeader" to="/" className="cursor-pointer"><img src={logo} alt="logo" id="mainLogoHeader" className='w-1/8 lg:w-1/8'/></NavLink>
             
             {/* mobile-format */}
             <div id="mobile-format" className='lg:hidden'>

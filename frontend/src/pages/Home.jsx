@@ -1,6 +1,8 @@
 import Principal from "../assets/image/Principal.jpg";
-import Patisserie from "../assets/image/Patisserie.jpg";
+import Patisserie from "../assets/image/Patisserri_cut.png";
 import Certificado from "../assets/image/Certificado.jpg";
+import Confeiteira from "../assets/image/Confeiteira.jpg";
+import "./Home.css";
 
 export default function Home({
   nome,
@@ -21,35 +23,28 @@ export default function Home({
       </section>
 
       {/* Imagem Patisserie */}
-      <section className="w-screen flex justify-center bg-[#0d1c18] py-12 px-4 sm:px-10">
-        <div className="bg-white rounded-3xl overflow-hidden shadow-2xl w-full sm:w-[95%] md:w-[92%] lg:w-[90%]">
+      <section className="patisserie-section">
+        <div className="patisserie-container">
           <img
             src={Patisserie}
             alt="Torta verde"
-            className="w-full h-auto object-cover block"
+            className="patisserie-img"
           />
         </div>
       </section>
 
       {/* Certificações */}
-      <section className="w-screen flex justify-center bg-[#0d1c18] py-12 px-4 sm:px-10">
-        <div className="bg-white rounded-3xl w-full sm:w-[95%] md:w-[92%] lg:w-[90%] p-8 md:p-12 shadow-2xl flex flex-col lg:flex-row items-center justify-center gap-10 text-black">
-          <div className="w-full lg:w-1/2 flex justify-center">
-            <img
-              src={Certificado}
-              alt="Certificado SugarLab"
-              className="rounded-2xl w-full max-w-[520px] object-contain"
-            />
-          </div>
+      <section className="certificacao-section">
+        <div className="certificacao-container">
+          <img
+            src={Certificado}
+            alt="Certificado SugarLab"
+            className="certificado-img"
+          />
 
-          <div className="w-full lg:w-1/2">
-            <h2 className="text-3xl font-semibold mb-4 text-[#0d1c18]">
-              Certificações e Reconhecimento
-            </h2>
-            <ul
-              className="list-disc list-outside pl-6 space-y-2 text-gray-700 marker:text-[#0d1c18]"
-              style={{ listStyleType: "disc" }}
-            >
+          <div className="certificacao-text">
+            <h2>Certificações e Reconhecimento</h2>
+            <ul>
               <li>
                 Certificações Reconhecidas: Cursos que oferecem diplomas ou
                 certificações valorizadas no mercado.
@@ -63,19 +58,20 @@ export default function Home({
         </div>
       </section>
 
+
       {/* Depoimento */}
       <section className="w-screen flex justify-center bg-[#0d1c18] py-12 px-4 sm:px-10 mb-16">
-        <div className="bg-white rounded-3xl w-full sm:w-[95%] md:w-[92%] lg:w-[90%] p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-start gap-8 text-black">
+        <div className="bg-white rounded-3xl w-full sm:w-[95%] md:w-[92%] lg:w-[96%] p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-start gap-8 text-black">
           <img
-            src=""
+            src={Confeiteira}
             alt="Chef"
             className="w-36 h-36 md:w-40 md:h-40 rounded-full object-cover shadow-md"
           />
           <div className="flex-1">
             <p className="text-lg leading-relaxed text-black">
-              <strong>Nome:</strong> {nome || ""} <br />
-              <strong>Formação:</strong> {formacao || ""} <br />
-              <strong>Tempo de carreira:</strong> {tempoCarreira || ""}
+              <strong>Nome:</strong> Suzana Mafra{nome || ""} <br />
+              <strong>Formação:</strong> Gastronomia e confeitaria{formacao || ""} <br />
+              <strong>Tempo de carreira:</strong> 25 anos{tempoCarreira || ""}
             </p>
             <p className="mt-6 text-gray-600 italic">{depoimento || ""}</p>
           </div>
