@@ -1,4 +1,4 @@
-import "./AboutUs.css"
+import "./aboutUs.css"
 import CatolicaLogo from "../assets/image/LogoCatolica.png"
 
 export default function AboutUs() {

@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import './Footer.css';
+import './footer.css';
 import logo_white from '../../assets/image/SugarLabBranco.png';
 
 const Footer = () => {
