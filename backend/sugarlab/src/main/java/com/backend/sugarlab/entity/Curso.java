@@ -72,8 +72,8 @@ public class Curso {
     private LocalDateTime createdAt = LocalDateTime.now(); // created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
     public enum Status {
-        DRAFT,
-        PUBLISHED
+        Rascunho,
+        Publicado
     }
 
     @ManyToOne
