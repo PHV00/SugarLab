@@ -2,7 +2,7 @@ import Principal from "../assets/image/Principal.jpg";
 import Patisserie from "../assets/image/Patisserri_cut.png";
 import Certificado from "../assets/image/Certificado.jpg";
 import Confeiteira from "../assets/image/Confeiteira.jpg";
-import "./Home.css";
+import "./home.css";
 
 export default function Home({
   nome,
@@ -19,7 +19,7 @@ export default function Home({
           src={Principal}
           alt="Bolo de banana"
           className="w-screen h-auto object-cover rounded-none shadow-lg"
-        />
+        /> 
       </section>
 
       {/* Imagem Patisserie */}
@@ -60,19 +60,24 @@ export default function Home({
 
 
       {/* Depoimento */}
-      <section className="w-screen flex justify-center bg-[#0d1c18] py-12 px-4 sm:px-10 mb-16">
-        <div className="bg-white rounded-3xl w-full sm:w-[95%] md:w-[92%] lg:w-[96%] p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-start gap-8 text-black">
+      <section className="depoimento-section">
+        <div className="depoimento-container">
           <img
             src={Confeiteira}
             alt="Chef"
-            className="w-36 h-36 md:w-40 md:h-40 rounded-full object-cover shadow-md"
+            className="depoimento-img"
           />
-          <div className="flex-1">
+          <div className="depoimento-info">
             <p className="text-lg leading-relaxed text-black">
               <strong>Nome:</strong> Suzana Mafra{nome || ""} <br />
               <strong>Formação:</strong> Gastronomia e confeitaria{formacao || ""} <br />
-              <strong>Tempo de carreira:</strong> 25 anos{tempoCarreira || ""}
+              <strong>Tempo de carreira:</strong> 25 anos{tempoCarreira || ""} <br />
             </p>
+              <div className="depoimento-text">
+                <p>
+                  <strong>Depoimento:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ab assumenda ut perspiciatis tempora doloribus accusamus fugiat veniam laborum! Reiciendis illo quod, a numquam quidem qui molestiae veniam consequatur totam.{depoimento || ""}
+                </p>
+              </div>
             <p className="mt-6 text-gray-600 italic">{depoimento || ""}</p>
           </div>
         </div>
