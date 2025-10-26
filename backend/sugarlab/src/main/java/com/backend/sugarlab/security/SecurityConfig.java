@@ -36,7 +36,8 @@ public class SecurityConfig {
                     "/alimentos/v1/**",
                     "/receitas/v1/**",
                     "/auth/**",
-                    "/cursos/v1/**"
+                    "/cursos/v1/**",
+                    "/categorias/v1/**"
                 ).permitAll()
                 .anyRequest().authenticated();
 
