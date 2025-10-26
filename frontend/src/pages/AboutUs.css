@@ -1,0 +1,118 @@
+:root {
+    --bg: #1e1e1e;
+    --card: #ffffff;
+    --ink: #1c1c1c;
+    --stroke: rgba(0, 0, 0, 0.06);
+    --text-muted: #2b2b2b;
+}
+
+.about {
+    min-height: 100vh;
+    background-color: var(--bg);
+    color: #fff;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 3rem 1rem 1.25rem;
+}
+
+.about-card {
+    width: min(980px, 100%);
+    background: var(--card);
+    color: var(--ink);
+    border-radius: 28px;
+    /* border: 1px solid var(--stroke); */
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.22);
+    padding: clamp(1.5rem, 3.2vw, 2.75rem);
+    margin: 2rem auto 0;
+}
+
+.about-card h1 {
+    font-size: clamp(1.75rem, 2.6vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.about-card p {
+    color: var(--text-muted);
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    line-height: 1.85;
+    max-width: 720px;
+    margin: .35rem 0;
+    align-items: end;
+}
+
+.about-info {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.25rem;
+    margin-top: 1rem;
+}
+
+.about-left h2,
+.about-left h3 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin: 1.2rem 0 .5rem;
+    font-style: italic;
+}
+
+.about-team {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem .35rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.about-team li {
+    font-size: .86rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    font-style: italic;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.about-team li::after {
+    content: " • ";
+    margin: 0 .35rem;
+    color: #666;
+}
+
+.about-team li:last-child::after{ content: "";}
+
+.about-orientador {
+    list-style: disc inside;
+    margin: 0;
+    padding: 0;
+}
+
+.about-orientador li {
+    font-size: .9rem;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.about-right {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.about-logo {
+    max-width: 220px;
+    height: auto;
+    opacity: 0.95;
+}
+
+footer {
+    margin-top: 0;                  
+}
+
+@media (max-width: 860px) {
+    .about-info{ grid-template-columns: 1fr; }
+    .about-right{ justify-content: center; align-items: center; }
+    .about-card p{ max-width: 100%; }
+}

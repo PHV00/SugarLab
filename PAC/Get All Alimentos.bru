@@ -1,0 +1,21 @@
+meta {
+  name: Get All Alimentos
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:8080/alimentos/v1/alimentos
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: Pedro
+  password: 1234
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

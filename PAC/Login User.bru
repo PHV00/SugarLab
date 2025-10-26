@@ -1,0 +1,36 @@
+meta {
+  name: Login User
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/auth/login
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aXRvcmV0aXBlZHJvQGdtYWlsLmNvbSIsImlhdCI6MTc2MTE3NjgwNiwiZXhwIjoxNzYxMTgwNDA2fQ.Rhhb6i4Z37IA_8CibjQEEbfrucsRXw_NOHwu8lGDIg4bU9lM_-S96oUdbJWSVvbk_6W49uqb2z8NaXxwF4CYMA
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aXRvcmV0aXBlZHJvQGdtYWlsLmNvbSIsImlhdCI6MTc2MTE3NTA3MywiZXhwIjoxNzYxMTc4NjczfQ.edfMFlnONdWEZILxwRRpW8QH8QW8sc8FsgUVzTNKxEGzT1ZYzprCSdzQcXGkdwY9OM52mh0olA_MHa5yYiypOw
+}
+
+body:json {
+  {   
+      "email":"vitoretipedro@gmail.com",
+      "senha":"1234"
+  }
+}
+
+script:post-response {
+  
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

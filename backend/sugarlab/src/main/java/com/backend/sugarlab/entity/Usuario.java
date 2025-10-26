@@ -7,10 +7,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @Entity
+@AllArgsConstructor
 @Table(name = "usuario")
 public class Usuario {
     @Id
@@ -18,12 +20,11 @@ public class Usuario {
     private int id;
 
     private String nome;
+    private String sobrenome;
     private String email;
     private String senha;
     private String telefone;
-    private String endereco;
     private Boolean ehAdmin;
-    private int ativo;
 
     @ManyToOne
     @JoinColumn(name = "assinatura_id")
