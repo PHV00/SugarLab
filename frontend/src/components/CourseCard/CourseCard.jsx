@@ -25,7 +25,6 @@ export default function CourseCard({ course, onMore }) {
         focus-within:-translate-y-1.5
       "
     >
-<<<<<<< HEAD
       {/* Imagem */}
       <img
         src={thumbnailUrl || "/placeholder-course.jpg"}
@@ -53,11 +52,6 @@ export default function CourseCard({ course, onMore }) {
           "
           title={title}
         >
-=======
-      {/* Texto */}
-      <div id="titles" className="p-6 md:p-7">
-        <h3 className="font-semibold tracking-wide text-[28px] md:text-[34px] leading-tight">
->>>>>>> main
           {title}
         </span>
 
@@ -67,18 +61,12 @@ export default function CourseCard({ course, onMore }) {
           id="maisButton"
           onClick={() => onMore?.(course)}
           className="
-<<<<<<< HEAD
             rounded-xl bg-white/95 px-5 py-2.5
             text-[16px] font-semibold text-[#142825]
             shadow-md hover:bg-white focus:outline-none
             focus-visible:ring-2 focus-visible:ring-[#5ea59a]
             transition-all
             self-start sm:self-auto
-=======
-            mt-4 inline-flex items-center gap-2
-            px-4 py-2 text-white shadow-[0_3px_0_rgba(0,0,0,.35)] cursor-pointer
-            hover:bg-[#203533] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#192927] focus-visible:ring-offset-2 focus-visible:ring-offset-white
->>>>>>> main
           "
           aria-label={`Ver detalhes de ${title}`}
         >
