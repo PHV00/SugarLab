@@ -42,8 +42,10 @@ public class Curso {
     @Column(name = "thumbnail_url", length = 255)
     private String thumbnailUrl; // thumbnail_url VARCHAR(255)
 
-    @Column(columnDefinition = "json")
-    private String highlights; // highlights JSON NULL
+    // @Type(value = JsonStringType.class)
+    @Column(columnDefinition = "JSON", nullable = true)
+    private String highlights;
+    // private List<String> highlights;
 
     @Column(length = 255)
     private String includes; // includes VARCHAR(255)
@@ -66,15 +68,10 @@ public class Curso {
     private Boolean featured = false; // featured TINYINT(1) DEFAULT 0
 
     @Enumerated(EnumType.STRING)
-    private Status status = Status.DRAFT; // status ENUM('draft','published')
+    private Status status = Status.Rascunho; // status ENUM('Rascunho','Publicado')
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now(); // created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
-    public enum Status {
-        Rascunho,
-        Publicado
-    }
 
     @ManyToOne
     @JoinColumn(name = "assinatura_id")

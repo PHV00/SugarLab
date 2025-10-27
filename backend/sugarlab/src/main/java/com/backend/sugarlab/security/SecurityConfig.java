@@ -35,6 +35,7 @@ public class SecurityConfig {
                 .requestMatchers(
                     "/alimentos/v1/**",
                     "/receitas/v1/**",
+                    "/cursos/v1/**" ,
                     "/auth/**"
                 ).permitAll()
                 .anyRequest().authenticated();

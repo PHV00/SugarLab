@@ -13,6 +13,8 @@ import com.backend.sugarlab.repository.ReceitaRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.math.BigDecimal;
+
 
 @Service
 public class CursoService {
@@ -39,7 +41,7 @@ public class CursoService {
         curso.setTimeRange(dto.getTimeRange());
         curso.setModality(dto.getModality());
         curso.setWorkloadHours(dto.getWorkloadHours());
-        curso.setPrice(dto.getPrice());
+        curso.setPrice(BigDecimal.valueOf(dto.getPrice()));        
         curso.setStatus(dto.getStatus());
         curso.setFeatured(dto.getFeatured());
 
@@ -83,7 +85,7 @@ public class CursoService {
         curso.setTimeRange(dto.getTimeRange());
         curso.setModality(dto.getModality());
         curso.setWorkloadHours(dto.getWorkloadHours());
-        curso.setPrice(dto.getPrice());
+        curso.setPrice(BigDecimal.valueOf(dto.getPrice()));        
         curso.setStatus(dto.getStatus());
         curso.setFeatured(dto.getFeatured());
 

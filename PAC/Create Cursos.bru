@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: http://localhost:8080/alimentos/v1/newAlimento
+  url: http://localhost:8080/cursos/v1/newCurso
   body: json
   auth: basic
 }
@@ -17,9 +17,24 @@ auth:basic {
 
 body:json {
   {
-    "nome":"Guilherme",
-    "descricao":"Caro pra cacete"
+    "slug": "doces-finos",
+    "title": "Doces Finos",
+    "description": "Aprenda doces incríveis.",
+    "summary": "Curso completo.",
+    "thumbnailUrl": "DocesFinos.jpg",
+    "highlights": "[\"Técnicas de decoração\"]",
+    "includes": "Acesso vitalício",
+    "dateRange": "2025-11-01 a 2025-12-15",
+    "timeRange": "19:00 às 21:00",
+    "modality": "Online",
+    "workloadHours": 20,
+    "price": 350.00,
+    "featured": true,
+    "status": "Rascunho",
+    "assinaturaId": 1,
+    "receitaId": 1
   }
+  
 }
 
 settings {

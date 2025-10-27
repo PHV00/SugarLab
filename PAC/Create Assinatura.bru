@@ -1,0 +1,47 @@
+meta {
+  name: Create Assinatura
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://localhost:8080/alimentos/v1/newAlimento
+  body: json
+  auth: basic
+}
+
+auth:basic {
+  username: Pedro
+  password: 1234
+}
+
+body:json {
+  {
+    "slug": "doces-finos",
+    "title": "Doces Finos",
+    "description": "Aprenda a criar doces que são verdadeiras joias da confeitaria.",
+    "summary": "Curso completo de doces finos para iniciantes e profissionais.",
+    "thumbnail_url": "DocesFinos.jpg",
+    "highlights": "Técnicas de decoração profissional",
+    "includes": "Acesso vitalício às aulas",
+    "date_range": "2025-11-01 a 2025-12-15",
+    "time_range": "19:00 às 21:00",
+    "modality": "Online",
+    "workload_hours": 20,
+    "price": 350.00,
+    "featured": true,
+    "status": "ativo",
+     "assinatura": {
+      "id": 1
+    },
+    "receita": {
+      "id": 5
+    }
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
