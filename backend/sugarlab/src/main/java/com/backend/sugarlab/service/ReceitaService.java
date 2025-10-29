@@ -3,74 +3,53 @@ package com.backend.sugarlab.service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.backend.sugarlab.DTO.AlimentoResumoDTO;
 import com.backend.sugarlab.DTO.ReceitaDTO;
+import com.backend.sugarlab.DTO.ReceitaResponseDTO;
 import com.backend.sugarlab.entity.Alimento;
 import com.backend.sugarlab.entity.Receita;
 import com.backend.sugarlab.repository.AlimentoRepository;
 import com.backend.sugarlab.repository.ReceitaRepository;
 
-import jakarta.persistence.EntityExistsException;
-
 @Service
 public class ReceitaService {
     
-    @Autowired
-    ReceitaRepository receitaRespository;
+    private final ReceitaRepository receitaRespository;
+    private final AlimentoRepository alimentoRepository;
 
-    @Autowired
-    AlimentoRepository alimentoRepository;
-
-    public ReceitaService(ReceitaRepository receitaRespository){
+    public ReceitaService(ReceitaRepository receitaRespository, AlimentoRepository alimentoRepository){
         this.receitaRespository = receitaRespository;
+        this.alimentoRepository = alimentoRepository;
     }
 
-    public Receita createReceita(ReceitaDTO receitaDto){
-        if(receitaDto.titulo() == ""){
-            throw new EntityExistsException("Receita with no datas!"); 
-        }
-
+    public ReceitaResponseDTO createReceita(ReceitaDTO receitaDto){
         Receita receita = new Receita();
         receita.setTitulo(receitaDto.titulo());
-
-        Set<Alimento> alimentos = new HashSet<>(alimentoRepository.findAllById(receitaDto.alimentos()));
-        System.out.println("Alimentos: " + alimentos);
-        receita.setAlimentos(alimentos);
-
-        return receitaRespository.save(receita);
-    }
-
-    public List<Receita> resgatarTodasReceitas(){
-        return receitaRespository.findAll();
-    }
-
-    public Receita resgatarUmaReceita(String nomeReceita){
-        Receita receita = receitaRespository.findByTitulo(nomeReceita)
-            .orElseThrow(() -> new RuntimeException("Receita nao encontrada"));
-
-        return receita;
-    }
-
-    public Receita editarReceita(int id, ReceitaDTO dto){
-        Receita existente = receitaRespository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Receita não encontrada!"));
-
-        existente.setTitulo(dto.titulo());
         
-        Set<Alimento> alimentos = new HashSet<>(alimentoRepository.findAllById(dto.alimentos()));
-        existente.setAlimentos(alimentos);
-
-        return receitaRespository.save(existente);
+        Set<Alimento> alimentos = new HashSet<>(alimentoRepository.findAllById(receitaDto.alimentosIds()));
+        receita.setAlimentos(alimentos);
+        
+        Receita salvo = receitaRespository.save(receita);
+        
+        return toResponseDTO(salvo);
+        
     }
 
-    public void deletarReceita(Integer id) {
-        Receita receita = receitaRespository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Receita não encontrada"));
+    public List<ReceitaResponseDTO> resgatarTodasReceitas(){
+        return receitaRespository.findAll().stream()
+               .map(this::toResponseDTO)
+               .toList();
+    }
 
-        receita.getAlimentos().clear();
-        receitaRespository.delete(receita);
+    private ReceitaResponseDTO toResponseDTO(Receita receita) {
+        Set<AlimentoResumoDTO> alimentos = receita.getAlimentos().stream()
+                .map(a -> new AlimentoResumoDTO(a.getId(), a.getNome(), a.getDescricao()))
+                .collect(Collectors.toSet());
+
+        return new ReceitaResponseDTO(receita.getTitulo(), alimentos);
     }
 }
