@@ -25,7 +25,7 @@ public class Curso {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  // corresponde a id INT AUTO_INCREMENT PRIMARY KEY
+    private Integer id;  // corresponde a id INT AUTO_INCREMENT PRIMARY KEY
 
     @Column(nullable = false, unique = true, length = 255)
     private String slug; // slug VARCHAR(255) UNIQUE

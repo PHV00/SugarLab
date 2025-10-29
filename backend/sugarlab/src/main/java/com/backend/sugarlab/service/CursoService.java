@@ -109,4 +109,10 @@ public class CursoService {
                 .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
         cursoRepository.delete(curso);
     }
+
+    public Curso resgatarCursoPorId(Integer id) {
+    return cursoRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
+    }
+
 }

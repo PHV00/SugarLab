@@ -19,6 +19,6 @@ public class CursoCadastroDto {
     private Double price;
     private Status status;
     private Boolean featured;
-    private Integer assinaturaId;
-    private Integer receitaId;
+    private Integer  assinaturaId;
+    private Integer  receitaId;
 }

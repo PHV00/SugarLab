@@ -12,6 +12,7 @@ import com.backend.sugarlab.service.CursoService;
 
 @RestController
 @RequestMapping("/cursos/v1")
+@CrossOrigin(origins = "http://localhost:5173")
 public class CursoController {
 
     @Autowired
@@ -38,8 +39,8 @@ public class CursoController {
         }
     }
 
-    @PutMapping("/cursos/edit/{id}")
-    public ResponseEntity<Curso> editCurso(@PathVariable int id, @RequestBody CursoCadastroDto dto){
+    @PutMapping("/edit/{id}")
+    public ResponseEntity<Curso> editCurso(@PathVariable Integer id, @RequestBody CursoCadastroDto dto){
         try {
             Curso cursoAtualizado = cursoService.editarCurso(id, dto);
             return ResponseEntity.ok(cursoAtualizado);
@@ -49,7 +50,7 @@ public class CursoController {
     }
 
     @DeleteMapping("/cursos/{id}")
-    public ResponseEntity<Void> deleteCurso(@PathVariable int id){
+    public ResponseEntity<Void> deleteCurso(@PathVariable Integer id){
         try {
             cursoService.deletarCurso(id);
             return ResponseEntity.noContent().build();
@@ -57,4 +58,15 @@ public class CursoController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Curso> getCourseById(@PathVariable Integer id) { // Long e não Integer
+    try {
+        Curso curso = cursoService.resgatarCursoPorId(id);
+        return ResponseEntity.ok(curso);
+    } catch (RuntimeException e) {
+        return ResponseEntity.notFound().build();
+    }
+}
+
 }
