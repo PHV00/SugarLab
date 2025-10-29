@@ -59,6 +59,16 @@ public class CursoController {
         }
     }
 
+    @GetMapping("/courses/{id}")
+    public ResponseEntity<Curso> getCoursePublic(@PathVariable Integer id) {
+        try {
+            Curso curso = cursoService.resgatarCursoPorId(id);
+            return ResponseEntity.ok(curso);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Curso> getCourseById(@PathVariable Integer id) { // Long e não Integer
     try {
