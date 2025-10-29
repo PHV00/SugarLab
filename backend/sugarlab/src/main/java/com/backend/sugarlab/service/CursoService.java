@@ -1,118 +1,76 @@
 package com.backend.sugarlab.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.backend.sugarlab.DTO.CursoCadastroDto;
-import com.backend.sugarlab.entity.Assinatura;
+import com.backend.sugarlab.DTO.CursoDTO;
+import com.backend.sugarlab.Mapper.CursoMapper;
 import com.backend.sugarlab.entity.Curso;
+import com.backend.sugarlab.entity.Modalidade;
 import com.backend.sugarlab.entity.Receita;
-import com.backend.sugarlab.repository.AssinaturaRepository;
 import com.backend.sugarlab.repository.CursoRepository;
+import com.backend.sugarlab.repository.ModalidadeRepository;
 import com.backend.sugarlab.repository.ReceitaRepository;
-
-import java.util.List;
-import java.util.Optional;
-import java.math.BigDecimal;
-
 
 @Service
 public class CursoService {
+    
+    @Autowired
+    CursoRepository cursoRepository;
 
     @Autowired
-    private CursoRepository cursoRepository;
+    ModalidadeRepository modalidadeRepository;
 
     @Autowired
-    private AssinaturaRepository assinaturaRepository;
+    ReceitaRepository receitaRepository;
 
-    @Autowired
-    private ReceitaRepository receitaRepository;
-
-    public Curso criarCurso(CursoCadastroDto dto) {
-        Curso curso = new Curso();
-        curso.setSlug(dto.getSlug());
-        curso.setTitle(dto.getTitle());
-        curso.setDescription(dto.getDescription());
-        curso.setSummary(dto.getSummary());
-        curso.setThumbnailUrl(dto.getThumbnailUrl());
-        curso.setHighlights(dto.getHighlights());
-        curso.setIncludes(dto.getIncludes());
-        curso.setDateRange(dto.getDateRange());
-        curso.setTimeRange(dto.getTimeRange());
-        curso.setModality(dto.getModality());
-        curso.setWorkloadHours(dto.getWorkloadHours());
-        curso.setPrice(BigDecimal.valueOf(dto.getPrice()));        
-        curso.setStatus(dto.getStatus());
-        curso.setFeatured(dto.getFeatured());
-
-        // Relacionamentos
-        if (dto.getAssinaturaId() != null) {
-            Assinatura assinatura = assinaturaRepository.findById(dto.getAssinaturaId())
-                    .orElseThrow(() -> new RuntimeException("Assinatura não encontrada"));
-            curso.setAssinatura(assinatura);
-        }
-
-        if (dto.getReceitaId() != null) {
-            Receita receita = receitaRepository.findById(dto.getReceitaId())
-                    .orElseThrow(() -> new RuntimeException("Receita não encontrada"));
-            curso.setReceita(receita);
-        }
+    public Curso criarCurso(CursoDTO dto){
+        Modalidade modalidade = modalidadeRepository.findById(dto.modalidade().getId())
+            .orElseThrow(() -> new IllegalArgumentException("Modalidade não encontrada!"));
+        
+        Receita receita = receitaRepository.findById(dto.receita().getId())
+            .orElseThrow(() -> new IllegalArgumentException("Receita não encontrada!"));
+        
+        Curso curso = CursoMapper.toCurso(dto, modalidade, receita);
 
         return cursoRepository.save(curso);
     }
 
-    public List<Curso> resgatarTodosCursos() {
+    public List<Curso> resgatarTodosCursos(){
         return cursoRepository.findAll();
     }
 
-    public Curso resgatarUmCurso(String title) {
-        return cursoRepository.findByTitle(title)
-                .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
+    public Curso resgatarUmCurso(int idCurso){
+        Curso curso = cursoRepository.findById(idCurso)
+            .orElseThrow(() -> new RuntimeException("Curso nao encontrado"));
+
+        return curso;
     }
 
-    public Curso editarCurso(Integer id, CursoCadastroDto dto) {
-        Curso curso = cursoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
+    public Curso editarCurso(int id, CursoDTO dto){
+        Curso existente = cursoRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Curso não encontrado!"));
 
-        curso.setSlug(dto.getSlug());
-        curso.setTitle(dto.getTitle());
-        curso.setDescription(dto.getDescription());
-        curso.setSummary(dto.getSummary());
-        curso.setThumbnailUrl(dto.getThumbnailUrl());
-        curso.setHighlights(dto.getHighlights());
-        curso.setIncludes(dto.getIncludes());
-        curso.setDateRange(dto.getDateRange());
-        curso.setTimeRange(dto.getTimeRange());
-        curso.setModality(dto.getModality());
-        curso.setWorkloadHours(dto.getWorkloadHours());
-        curso.setPrice(BigDecimal.valueOf(dto.getPrice()));        
-        curso.setStatus(dto.getStatus());
-        curso.setFeatured(dto.getFeatured());
+        existente.setNome(dto.nome());
+        existente.setDescricao(dto.descricao());
+        existente.setImagem(dto.imagem());
+        existente.setData(dto.data());
+        existente.setHorario(dto.horario());
+        existente.setCarga_horaria(dto.carga_horaria());
+        existente.setStatus(dto.status());
+        existente.setUrl_video(dto.url_video());
+        existente.setModalidade(dto.modalidade());
+        existente.setReceita(dto.receita());
 
-        if (dto.getAssinaturaId() != null) {
-            Assinatura assinatura = assinaturaRepository.findById(dto.getAssinaturaId())
-                    .orElseThrow(() -> new RuntimeException("Assinatura não encontrada"));
-            curso.setAssinatura(assinatura);
-        }
-
-        if (dto.getReceitaId() != null) {
-            Receita receita = receitaRepository.findById(dto.getReceitaId())
-                    .orElseThrow(() -> new RuntimeException("Receita não encontrada"));
-            curso.setReceita(receita);
-        }
-
-        return cursoRepository.save(curso);
+        return cursoRepository.save(existente);
     }
 
-    public void deletarCurso(Integer id) {
+    public void deletarCurso(int id){
         Curso curso = cursoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
+            .orElseThrow(() -> new IllegalArgumentException("Curso não encontrado"));
+
         cursoRepository.delete(curso);
     }
-
-    public Curso resgatarCursoPorId(Integer id) {
-    return cursoRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
-    }
-
 }
