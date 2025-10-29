@@ -1,5 +1,17 @@
 package com.backend.sugarlab.DTO;
 
-import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public record AlimentoCadastroDto(String nome, String descricao, Set<Integer> categoriasIds) {}
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+public class AlimentoCadastroDto {
+    private String nome;
+    private String descricao;    
+}

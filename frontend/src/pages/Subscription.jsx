@@ -1,4 +1,4 @@
-import "./subscription.css"
+import "./Subscription.css"
 
 export default function Subscription() {
     return (

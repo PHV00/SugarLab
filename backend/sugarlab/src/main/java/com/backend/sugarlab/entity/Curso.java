@@ -74,15 +74,12 @@ public class Curso {
     private LocalDateTime createdAt = LocalDateTime.now(); // created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
     @ManyToOne
+    @JoinColumn(name = "assinatura_id")
+    private Assinatura assinatura;
+
+    @OneToOne
     @JoinColumn(name = "receita_id")
     private Receita receita;
-
-    @ManyToOne
-    @JoinColumn(name = "modalidade_id")
-    private Modalidade modalidade;
-
-    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Assinatura> assinaturas;
 
     public Curso() {}
 }
