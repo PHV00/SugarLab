@@ -9,10 +9,14 @@ import UserRegister from './pages/UserRegister'
 import Subscription from './pages/Subscription'
 function App() {
 
-  return (
-    <>
-      <Header/>
+import Courses from "./pages/Courses.jsx";
+import AdminHome from "./pages/admin/AdminHome.jsx";            // ✅ relativo
+import AdminCoursesList from "./pages/admin/AdminCoursesList.jsx";
+import AdminCourseForm from "./pages/admin/AdminCourseForm.jsx";
 
+export default function App() {
+  return (
+    <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/cursos' element={<Courses/>}/>
@@ -21,9 +25,15 @@ function App() {
         <Route path='/assinatura' element={<Subscription/>}/>
       </Routes>
 
-      <Footer/>
-    </>
-  )
-}
+        {/* Admin provisório + CRUD */}
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="/admin/cursos" element={<AdminCoursesList />} />
+        <Route path="/admin/cursos/novo" element={<AdminCourseForm />} />
+        <Route path="/admin/cursos/:id/editar" element={<AdminCourseForm />} />
 
-export default App
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/cursos" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
