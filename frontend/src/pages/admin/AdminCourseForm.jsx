@@ -53,12 +53,12 @@ export default function AdminCourseForm() {
         title: data.title || "",
         description: data.description || "",
         summary: data.summary || "",
-        thumbnail_url: data.thumbnail_url || "",
+        thumbnail_url: data.thumbnailUrl || "",
         includes: data.includes || "",
-        date_range: data.date_range || "",
-        time_range: data.time_range || "",
+        date_range: data.dateRange || "",
+        time_range: data.timeRange || "",
         modality: data.modality || "",
-        workload_hours: data.workload_hours ?? "",
+        workload_hours: data.workloadHours ?? "",
         status: data.status || "draft",
       });
     })();

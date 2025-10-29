@@ -1,0 +1,21 @@
+meta {
+  name: Get Curso
+  type: http
+  seq: 8
+}
+
+get {
+  url: http://localhost:8080/cursos/v1/courses/1
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: Pedro
+  password: 1234
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
