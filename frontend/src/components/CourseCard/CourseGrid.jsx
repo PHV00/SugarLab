@@ -1,61 +1,27 @@
-/**
- * Componente: CourseGrid
- * ---------------------------------------------------------------
- * Responsável por organizar a vitrine de cursos em um grid
- * responsivo, centralizado e com espaçamento adequado.
- *
- * - Recebe: `courses` (array), `isLoading` (bool), `onMore` (fn).
- * - Mostra skeletons durante o carregamento.
- * - Renderiza estado vazio quando não há cursos.
- * ---------------------------------------------------------------
- */
-
 import PropTypes from "prop-types";
 import CourseCard from "./CourseCard";
-import CourseSkeleton from "./CourseSkeleton";
-
-const GridWrap = ({ children }) => (
-  <div
-    className="
-      grid
-      grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
-      gap-10 sm:gap-12
-      justify-items-center
-    "
-  >
-    {children}
-  </div>
-);
-
-GridWrap.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default function CourseGrid({ courses = [], isLoading = false, onMore }) {
   if (isLoading) {
     return (
-      <GridWrap>
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {Array.from({ length: 6 }).map((_, i) => (
-          <CourseSkeleton key={i} />
+          <div key={i} className="h-[360px] rounded-[28px] bg-white/10 animate-pulse" />
         ))}
-      </GridWrap>
-    );
-  }
-
-  if (!courses.length) {
-    return (
-      <div className="rounded-2xl bg-white/10 p-8 text-center text-white/85">
-        Nenhum curso disponível no momento.
       </div>
     );
   }
 
+  if (!courses.length) {
+    return <div className="rounded-2xl bg-white/5 p-8 text-center text-white/70">Nenhum curso disponível.</div>;
+  }
+
   return (
-    <GridWrap>
+    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {courses.map((c) => (
-        <CourseCard key={c.id ?? c.slug ?? c.title} course={c} onMore={onMore} />
+        <CourseCard key={c.id || c.title} course={c} onMore={onMore} />
       ))}
-    </GridWrap>
+    </div>
   );
 }
 
