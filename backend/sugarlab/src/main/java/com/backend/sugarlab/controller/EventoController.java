@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,5 +36,15 @@ public class EventoController {
     @GetMapping("/eventos")
     public ResponseEntity<List<Evento>> getAllEventos(){
         return ResponseEntity.ok().body(eventoService.listarEventos());
+    }
+
+    @DeleteMapping("/eventos/{id}")
+    public ResponseEntity<Void> deleteEvento(int id){
+        try {
+            eventoService.deletarEvento(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
