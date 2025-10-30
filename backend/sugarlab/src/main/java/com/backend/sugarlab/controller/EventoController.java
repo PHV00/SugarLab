@@ -15,16 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.sugarlab.DTO.EventoDTO;
 import com.backend.sugarlab.entity.Evento;
-import com.backend.sugarlab.repository.EventoRepository;
 import com.backend.sugarlab.service.EventoService;
 
 @RestController
 @RequestMapping("/eventos/v1")
 public class EventoController {
     
-    @Autowired
-    EventoRepository eventoRepository;
-
     @Autowired
     EventoService eventoService;
 
