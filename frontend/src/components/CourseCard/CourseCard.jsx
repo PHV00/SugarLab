@@ -44,7 +44,6 @@ export default function CourseCard({ course, onMore }) {
         <span
           className="
             inline-flex items-center rounded-2xl
-            bg-[#5ea59a]/95 px-6 py-3
             text-white text-[24px] font-semibold tracking-wide shadow-lg
             backdrop-blur-sm
             max-w-[70%]
@@ -59,10 +58,10 @@ export default function CourseCard({ course, onMore }) {
           type="button"
           onClick={() => onMore?.(course)}
           className="
-            rounded-xl bg-white/95 px-5 py-2.5
-            text-[16px] font-semibold text-[#142825]
-            shadow-md hover:bg-white focus:outline-none
-            focus-visible:ring-2 focus-visible:ring-[#5ea59a]
+            rounded-xl px-5 py-2.5
+            text-[16px] font-semibold text-[#ffffff]
+            shadow-md focus:outline-none
+            focus-visible:ring-2
             transition-all
             self-start sm:self-auto
           "

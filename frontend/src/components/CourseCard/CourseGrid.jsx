@@ -1,15 +1,3 @@
-/**
- * Componente: CourseGrid
- * ---------------------------------------------------------------
- * Responsável por organizar a vitrine de cursos em um grid
- * responsivo, centralizado e com espaçamento adequado.
- *
- * - Recebe: `courses` (array), `isLoading` (bool), `onMore` (fn).
- * - Mostra skeletons durante o carregamento.
- * - Renderiza estado vazio quando não há cursos.
- * ---------------------------------------------------------------
- */
-
 import PropTypes from "prop-types";
 import CourseCard from "./CourseCard";
 import CourseSkeleton from "./CourseSkeleton";
@@ -21,6 +9,8 @@ const GridWrap = ({ children }) => (
       grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
       gap-10 sm:gap-12
       justify-items-center
+      w-full
+      place-items-center
     "
   >
     {children}
