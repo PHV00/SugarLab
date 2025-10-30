@@ -1,7 +1,10 @@
 package com.backend.sugarlab.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,5 +30,10 @@ public class EventoController {
         Evento novoEvento = eventoService.criarEvento(dto);
 
         return ResponseEntity.ok().body(novoEvento);
+    }
+
+    @GetMapping("/eventos")
+    public ResponseEntity<List<Evento>> getAllEventos(){
+        return ResponseEntity.ok().body(eventoService.listarEventos());
     }
 }
