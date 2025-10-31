@@ -33,6 +33,7 @@ export default function UserLogin() {
         localStorage.setItem("token", data.token);
         alert("Login realizado com sucesso!");
         // Redirecionar ou atualizar estado do usuário
+        window.location.href = "/";
       } else {
         alert("Email ou senha incorretos");
       }
