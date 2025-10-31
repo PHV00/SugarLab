@@ -4,9 +4,7 @@ import useFetch from "../hooks/useFetch";
 import { useState } from "react";
 
 export default function UserRegister() {
-    // Exemplo: buscar usuários (opcional)
-    const [usuarios, loading, error] = useFetch("http://localhost:8080/usuarios");
-
+    
     const [formData, setFormData] = useState({
         nome: "",
         sobrenome: "",

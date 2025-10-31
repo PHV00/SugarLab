@@ -7,6 +7,8 @@ import Footer from './components/footer/Footer'
 import { Routes, Route } from 'react-router-dom'
 import UserRegister from './pages/UserRegister'
 import Subscription from './pages/Subscription'
+import Login from './pages/Login'
+
 function App() {
 
   return (
@@ -19,6 +21,7 @@ function App() {
         <Route path='/registro' element={<UserRegister/>}/>
         <Route path='/sobre' element={<AboutUs/>}/>
         <Route path='/assinatura' element={<Subscription/>}/>
+        <Route path='/login' element={<Login/>}/>
       </Routes>
 
       <Footer/>
