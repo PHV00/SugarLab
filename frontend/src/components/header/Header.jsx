@@ -1,17 +1,19 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import './header.css'
 import logo from '../../assets/image/SugarLab.png';
-import HamburguerMenu from '../Icons/HamburguerMenu';
+import HamburguerMenu from '../icons/HamburguerMenu';
 import { useState } from 'react';
 
 const Header = () => {
-    const navOptions = [ 'Cursos', 'Comunidade', 'Sobre Nós', 'Assinatura', 'Cadastro', 'Login']
+    const navOptions = ['Cursos', 'Comunidade', 'Sobre Nós', 'Assinatura', 'Cadastro', 'Login']
     const [mobileMenuClicked, setMobileMenuClicked] = useState(false)
     const navigate = useNavigate();
 
     return(
         <nav id='headerClass' className='flex justify-between relative'>
-            <img src={logo} alt="logo" className='w-2/12 lg:w-1/12'/>
+            <NavLink id="mainLogoHeader" to="/" className="cursor-pointer">
+                <img src={logo} alt="logo" id="mainLogoHeader" className='w-50'/>
+            </NavLink>
             
             {/* mobile-format */}
             <div id="mobile-format" className='lg:hidden'>

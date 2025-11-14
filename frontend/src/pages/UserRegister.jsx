@@ -1,4 +1,4 @@
-import './UserRegister.css'
+import './userRegister.css'
 import Logo from "../assets/image/SugarLab.png"
 
 export default function UserRegister() {
