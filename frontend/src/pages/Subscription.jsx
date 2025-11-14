@@ -1,6 +1,9 @@
-import "./subscription.css"
+import "./Subscription.css"
+import { useNavigate } from "react-router-dom";
 
 export default function Subscription() {
+    const navigate = useNavigate();
+
     return (
         <div className="subscription">
             <main className="subscription-container">
@@ -21,7 +24,7 @@ export default function Subscription() {
 
                         <div className="subscription-period">1 ano de <span className="subscription-logo">SUGARLAB</span></div>
 
-                        <button type="button" className="subscription-button">ASSINAR AGORA!</button>
+                        <button type="button" className="subscription-button" onClick={() => navigate("/pagamento")}>ASSINAR AGORA!</button>
                     </div>
 
                 </section>
