@@ -1,0 +1,121 @@
+/* Estilos para AdminCourseForm — garante contraste, cores e ícones legíveis */
+ 
+/* Variáveis (modifique se quiser ajustar tons) */
+:root {
+  --ac-text: #0f172a; /* texto principal (escuro) */
+  --ac-muted: #374151; /* labels e textos secundários */
+  --ac-input-bg: #ffffff; /* fundo dos inputs */
+  --ac-input-border: #d1d5db;
+  --ac-input-placeholder: #9ca3af;
+  --ac-icon: #142825;
+  --ac-button-bg: #142825;
+  --ac-button-text: #ffffff;
+}
+ 
+/* Modo escuro — se usuário preferir dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ac-text: #ffffff;
+    --ac-muted: #cbd5db;
+    --ac-input-bg: #1d483e;
+    --ac-input-border: rgba(255,255,255,0.08);
+    --ac-input-placeholder: rgba(255,255,255,0.6);
+    --ac-icon: #cfe9e4;
+    --ac-button-bg: #1c3b36;
+    --ac-button-text: #ffffff;
+  }
+}
+ 
+/* Aplica cor base a título e ao formulário (a selector usa a sua classe/estrutura atual) */
+form[class*="md:grid-cols"] {
+  color: var(--ac-text);
+}
+ 
+/* H1 e cabeçalhos */
+h1, .text-2xl {
+  color: rgba(44, 44, 44, 0.697);
+}
+ 
+/* Labels — sobrescreve classes tailwind text-gray-700 quando necessário */
+label, .text-gray-700 , .text-lg {
+  color: rgba(44, 44, 44, 0.697);
+}
+ 
+/* Inputs / textarea / select */
+.input,
+input,
+textarea,
+select {
+  color: var(--ac-text) !important;
+  background: var(--ac-input-bg) !important;
+  border-color: var(--ac-input-border) !important;
+  border-radius: .5rem;
+  padding: .55rem .75rem;
+  outline: none;
+  box-sizing: border-box;
+}
+ 
+/* Placeholder */
+.input::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: var(--ac-input-placeholder) !important;
+  opacity: 1;
+}
+ 
+/* Focus visível */
+.input:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 2px rgba(94,165,154,.35) !important;
+  border-color: var(--ac-button-bg) !important;
+}
+ 
+/* Ícones SVG — usa currentColor para manter contraste e poder ajustar pela cor do texto */
+form[class*="md:grid-cols"] svg,
+form[class*="md:grid-cols"] svg * {
+  stroke: currentColor !important;
+  fill: none !important;
+  color: var(--ac-icon) !important;
+}
+ 
+/* O ícone dentro do span absolutizado (garante cor coerente) */
+form[class*="md:grid-cols"] .absolute > svg,
+form[class*="md:grid-cols"] .absolute {
+  color: var(--ac-icon) !important;
+}
+ 
+/* Botão criar/salvar — força contraste com !important para sobescrever tailwind text-black */
+form[class*="md:grid-cols"] button[type="submit"] {
+  background: var(--ac-button-bg) !important;
+  color: var(--ac-button-text) !important;
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-top-left-radius: 0.5cap;
+  border-top-right-radius: 0.5cap;
+  border-bottom-left-radius: 0.5cap;
+  border-bottom-left-radius: 0.5cap;
+  box-shadow: none;
+  cursor: pointer;
+}
+ 
+/* Garantir que texto do select fique legível */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: var(--ac-text) !important;
+}
+ 
+/* Pequenas melhorias visuais opcionais */
+.input[disabled], input[disabled], textarea[disabled] {
+  opacity: 0.7;
+}
+ 
+/* Fallback para links/elementos com pouca cor */
+a, button, label {
+  text-decoration: none;
+  color: inherit;
+}
