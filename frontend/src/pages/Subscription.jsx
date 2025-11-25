@@ -23,8 +23,8 @@ export default function Subscription() {
                         </div>
 
                         <div className="subscription-period">1 ano de <span className="subscription-logo">SUGARLAB</span></div>
-
                         <button type="button" className="subscription-button" onClick={() => navigate("/pagamento")}>ASSINAR AGORA!</button>
+                    
                     </div>
 
                 </section>
