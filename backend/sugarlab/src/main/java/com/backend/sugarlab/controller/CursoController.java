@@ -49,7 +49,7 @@ public class CursoController {
         }
     }
 
-    @DeleteMapping("/cursos/{id}")
+    @DeleteMapping("/curso/{id}")
     public ResponseEntity<Void> deleteCurso(@PathVariable Integer id){
         try {
             cursoService.deletarCurso(id);
@@ -59,7 +59,7 @@ public class CursoController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/curso/{id}")
     public ResponseEntity<Curso> getCourseById(@PathVariable Integer id) { // Long e não Integer
     try {
         Curso curso = cursoService.resgatarCursoPorId(id);

@@ -7,8 +7,7 @@
 }
 
 .about {
-    min-height: 100vh;
-    background-color: var(--bg);
+    min-height: 100vh;  
     color: #fff;
     display: flex;
     align-items: flex-start;

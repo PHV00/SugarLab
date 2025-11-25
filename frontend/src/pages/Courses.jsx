@@ -54,7 +54,7 @@ export default function Courses() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main className="min-h-screen bg-[#142825] flex flex-col items-center justify-start pb-20">
      <div className="h-6"></div> 
      <div className="w-full max-w-7xl px-10 flex flex-col items-center text-white">

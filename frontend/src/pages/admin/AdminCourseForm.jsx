@@ -206,7 +206,7 @@ export default function AdminCourseForm() {
           <div className="pt-3">
             <button
               type="submit"
-              className="float-right rounded-md bg-[#142825] px-7 py-2.5 text-white hover:bg-[#1c3b36] active:scale-[.99] transition"
+              className="float-right rounded-md bg-[#142825] px-7 py-2.5 text-black hover:bg-[#1c3b36] active:scale-[.99] transition"
             >
               {editing ? "Salvar" : "Criar"}
             </button>
