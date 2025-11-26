@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom'
 import UserRegister from './pages/UserRegister'
 import Subscription from './pages/Subscription'
 import Login from './pages/Login'
+import Comunidade from './pages/Community'
 import AdminHome from './pages/admin/AdminHome'
 import AdminCoursesList from './pages/admin/AdminCoursesList'
 import AdminCourseForm from './pages/admin/AdminCourseForm'
@@ -25,6 +26,7 @@ function App() {
         <Route path='/sobre' element={<AboutUs/>}/>
         <Route path='/assinatura' element={<Subscription/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/comunidade' element={<Comunidade/>}/>
 
         <Route path="/admin" element={<AdminHome />} />
         <Route path="/admin/cursos" element={<AdminCoursesList />} />

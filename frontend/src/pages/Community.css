@@ -1,0 +1,53 @@
+.clients-photos {
+    display: flex;
+    padding: 10cap;
+    gap: 300px;
+}
+.client1-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+}
+.client2-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+}
+.client3-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+}
+.client1-img strong {
+    
+}
+.client2-img strong {
+  
+}
+.client3-img strong {
+  
+}
+.main-feedback-part {
+    display: flex;
+    padding: 10cap;
+    margin-top: -200px;
+    gap: 80px;
+}
+.feedback-name-1 {
+    width: 350px;
+}
+.feedback-text-1 {
+    width: 350px;
+}
+.feedback-name-2 {
+    width: 350px;
+}
+.feedback-text-2 {
+    width: 350px;
+}
+.feedback-name-3 {
+    width: 350px;
+}
+.feedback-text-3 {
+    width: 350px;
+}
