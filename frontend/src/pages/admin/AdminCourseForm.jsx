@@ -35,13 +35,12 @@ export default function AdminCourseForm() {
     title: "",
     description: "",
     summary: "",
-    thumbnail_url: "",
-
+    thumbnailUrl: "",
     includes: "",
     dateRange: "",
-    time_range: "",
+    timeRange: "",
     modality: "",
-    workload_hours: "",
+    workloadHours: "",
     status: "published", // padrão para já aparecer na vitrine
   });
 
@@ -54,12 +53,12 @@ export default function AdminCourseForm() {
         title: data.title || "",
         description: data.description || "",
         summary: data.summary || "",
-        thumbnail_url: data.thumbnail_url || "",
+        thumbnailUrl: data.thumbnailUrl || "",
         includes: data.includes || "",
-        date_range: data.date_range || "",
-        time_range: data.time_range || "",
+        dateRange: data.dateRange || "",
+        timeRange: data.timeRange || "",
         modality: data.modality || "",
-        workload_hours: data.workload_hours ?? "",
+        workloadHours: data.workloadHours ?? "",
         status: data.status || "draft",
       });
     })();
@@ -78,13 +77,13 @@ export default function AdminCourseForm() {
       title: form.title?.trim(),
       description: form.description?.trim(),
       summary: form.summary?.trim(),
-      thumbnail_url: form.thumbnail_url?.trim(),
+      thumbnailUrl: form.thumbnail_url?.trim(),
       highlights: [], // opcional
       includes: form.includes?.trim(),
-      date_range: form.date_range?.trim(),
-      time_range: form.time_range?.trim(),
+      dateRange: form.dateRange?.trim(),
+      timeRange: form.timeRange?.trim(),
       modality: form.modality?.trim(),
-      workload_hours: form.workload_hours ? Number(form.workload_hours) : null,
+      workloadHours: form.workloadHours ? Number(form.workloadHours) : null,
       price: null,
       featured: 0,
       status: form.status || "published",
@@ -135,7 +134,7 @@ export default function AdminCourseForm() {
           <L label="Imagem:">
             <input
               name="thumbnail_url"
-              value={form.thumbnail_url}
+              value={form.thumbnailUrl}
               onChange={onChange}
               placeholder='Ex.: "Patisserie.jpg" ou URL https://...'
               className="input"
@@ -148,7 +147,7 @@ export default function AdminCourseForm() {
           <FieldWithIcon
             label="Data"
             name="date_range"
-            value={form.date_range}
+            value={form.dateRange}
             onChange={onChange}
           >
             <CalendarIcon />
@@ -157,7 +156,7 @@ export default function AdminCourseForm() {
           <FieldWithIcon
             label="Horário"
             name="time_range"
-            value={form.time_range}
+            value={form.timeRange}
             onChange={onChange}
           >
             <ClockIcon />
@@ -175,7 +174,7 @@ export default function AdminCourseForm() {
           <FieldWithIcon
             label="Carga horária"
             name="workload_hours"
-            value={form.workload_hours}
+            value={form.workloadHours}
             onChange={onChange}
             type="number"
           >
