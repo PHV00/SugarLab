@@ -78,7 +78,7 @@ export default function AdminCourseForm() {
       description: form.description?.trim(),
       summary: form.summary?.trim(),
       thumbnailUrl: form.thumbnailUrl?.trim(),
-      highlights: {}, // opcional
+      highlights: "{}", // opcional
       includes: form.includes?.trim(),
       dateRange: form.dateRange?.trim(),
       timeRange: form.timeRange?.trim(),
