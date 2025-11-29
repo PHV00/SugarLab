@@ -23,7 +23,7 @@ export default function Community() {
             <h1><b>Junte-se à nossa comunidade no WhatsApp!</b></h1>
             <p>Participe do nosso grupo exclusivo para trocar dicas, receitas e experiências com outros entusiastas da confeitaria. Clique no link abaixo para entrar:</p>
             <button className="group-whatsapp-button">
-              <a href="https://chat.whatsapp.com/KF6bX4YJ3YkD3kL5E6Z7gH" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
+              <a href="https://chat.whatsapp.com/L8lUEbLbcXtIkl9kQiBJVC" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
                 <img src={WhatsAppLogo} alt="WhatsApp Logo" width={40} />
                 Entrar no Grupo do WhatsApp
               </a>
