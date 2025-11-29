@@ -35,7 +35,6 @@ export default function AdminCourseForm() {
     description: "",
     summary: "",
     thumbnail_url: "",
-
     includes: "",
     dateRange: "",
     time_range: "",
