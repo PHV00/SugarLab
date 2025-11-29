@@ -4,6 +4,8 @@ const BASE = "http://localhost:8080/cursos/v1";
 async function http(method, path, body) {
   const token = localStorage.getItem("token");
 
+  console.log(body)
+
   const res = await fetch(`${BASE}${path}`, {
     method,
     headers: {
