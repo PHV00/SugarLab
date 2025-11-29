@@ -39,55 +39,64 @@ export default function Community() {
         <div className="feedbacks-title">
           <h1>Relatos da comunidade</h1>
         </div>
-        <div className="clients-photos">
+        <div className="clients-feedbacks">
+          <div className="client-01">
             <img
             src={Cliente1}
             alt=""
             className="client1-img"
             />
+            
+            <h1><b>Daniel Douglas dos Santos</b></h1> <br />
+                <p>
+                  "Participar do curso foi transformador! Aprendi técnicas que antes pareciam impossíveis e hoje cozinho com muito mais confiança. Recomendo para todos que amam gastronomia!"
+                </p>
+            <p className="mt-6 text-gray-600 italic"></p>
+          </div>
 
+          <div className="client-02">
             <img
             src={Cliente2}
             alt=""
             className="client2-img"
             />
+
+            <h1><b>Pedro Henrique Vitoreti</b></h1> <br />
+                <p>
+                  "O curso superou minhas expectativas! Além das receitas incríveis, os professores foram muito atenciosos e ajudaram em cada detalhe. Uma experiência que levarei para a vida!"
+                </p>
+            <p className="mt-6 text-gray-600 italic"></p>
+          </div>
             
+          <div className="client-03">
             <img
             src={Cliente3}
             alt=""
             className="client3-img"
             />
+
+            <h1><b>Paulo Guilherme Winchester</b></h1> <br />
+                <p>
+                  "Eu sempre gostei de cozinhar, mas com o curso aprendi a fazer pratos profissionais. O ambiente foi acolhedor e me senti parte de uma verdadeira família culinária."
+                </p>
+            <p className="mt-6 text-gray-600 italic"></p>
+          </div>
         </div>
         
         <div className="main-feedback-part">
             <div className="feedback-name-1">
-              <h1><b>Daniel Douglas dos Santos</b></h1> <br />
               <div className="feedback-text-1">
-                <p>
-                  "Participar do curso foi transformador! Aprendi técnicas que antes pareciam impossíveis e hoje cozinho com muito mais confiança. Recomendo para todos que amam gastronomia!"
-                </p>
               </div>
-            <p className="mt-6 text-gray-600 italic"></p>
           </div>
 
           <div className="feedback-name-2">
-              <h1><b>Pedro Henrique Vitoreti</b></h1> <br />
               <div className="feedback-text-2">
-                <p>
-                  "O curso superou minhas expectativas! Além das receitas incríveis, os professores foram muito atenciosos e ajudaram em cada detalhe. Uma experiência que levarei para a vida!"
-                </p>
               </div>
-            <p className="mt-6 text-gray-600 italic"></p>
           </div>
           
           <div className="feedback-name-3">
-              <h1><b>Paulo Guilherme Winchester</b></h1> <br />
               <div className="feedback-text-3">
-                <p>
-                  "Eu sempre gostei de cozinhar, mas com o curso aprendi a fazer pratos profissionais. O ambiente foi acolhedor e me senti parte de uma verdadeira família culinária."
-                </p>
               </div>
-            <p className="mt-6 text-gray-600 italic"></p>
           </div>
         </div>
       </section>

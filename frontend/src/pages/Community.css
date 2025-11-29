@@ -69,6 +69,7 @@
 
 .feedbacks-section {
     padding: 160px 80px;
+    margin-left: 75px;
 }
 
 .feedbacks-title h1 {
@@ -78,39 +79,36 @@
     color: white;
 }
 
-/* Fotos */
-.clients-photos {
-    display: flex;
-    justify-content: left;
-    gap: clamp(528px, 8vw, 200px);
-    padding: 20px;
-    flex-wrap: wrap;
-}
-
-.clients-photos img {
-    width: clamp(80px, 12vw, 130px);
-    height: clamp(80px, 12vw, 130px);
-    border-radius: 50%;
-}
-
 /* Texto */
-.main-feedback-part {
+.clients-feedbacks {
     display: flex;
     justify-content: left;
-    gap: clamp(310px, 8vw, 200px);
+    gap: clamp(250px, 8vw, 200px);
     flex-wrap: wrap;
     padding: 20px;
 }
 
-.main-feedback-part h1 {
+.clients-feedbacks img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.clients-feedbacks h1 {
     font-size: clamp(18px, 3vw, 25px);
+    margin-top: 30px;
     color: white;
 }
 
-.main-feedback-part p {
+.clients-feedbacks p {
     max-width: 350px;
     font-size: 16px;
 }
+
+/* ======================== */
+/*      EVENTS              */
+/* ======================== */
 
 .events-section {
     background-color: white;
@@ -122,6 +120,10 @@
     text-align: left;
     margin-bottom: 50px;
     color: black;
+}
+
+.events-title h1 {
+    margin-left: 75px;
 }
 
 .events-content {
