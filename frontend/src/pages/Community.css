@@ -67,18 +67,22 @@
 /*      FEEDBACKS           */
 /* ======================== */
 
+.feedbacks-section {
+    padding: 160px 80px;
+}
+
 .feedbacks-title h1 {
     font-size: clamp(26px, 4vw, 50px);
-    text-align: center;
-    margin-top: 80px;
+    text-align: left;
+    margin-bottom: 50px;
     color: white;
 }
 
 /* Fotos */
 .clients-photos {
     display: flex;
-    justify-content: center;
-    gap: clamp(30px, 8vw, 200px);
+    justify-content: left;
+    gap: clamp(528px, 8vw, 200px);
     padding: 20px;
     flex-wrap: wrap;
 }
@@ -92,8 +96,8 @@
 /* Texto */
 .main-feedback-part {
     display: flex;
-    justify-content: center;
-    gap: clamp(20px, 5vw, 80px);
+    justify-content: left;
+    gap: clamp(310px, 8vw, 200px);
     flex-wrap: wrap;
     padding: 20px;
 }
@@ -106,6 +110,66 @@
 .main-feedback-part p {
     max-width: 350px;
     font-size: 16px;
+}
+
+.events-section {
+    background-color: white;
+    padding: 160px 80px;
+}
+
+.events-title {
+    font-size: clamp(26px, 4vw, 50px);
+    text-align: left;
+    margin-bottom: 50px;
+    color: black;
+}
+
+.events-content {
+    display: flex;
+    justify-content: center;
+    gap: clamp(20px, 5vw, 80px);
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.event-01 {
+    height: auto;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.event-01 h1 {
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 30px;
+}
+
+.event-01 p {
+    width: 750px;
+    padding: 30px;
+    margin-top: -50px;
+    color: black;
+}
+
+.event-02 {
+    height: auto;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.event-02 h1 {
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 30px;
+}
+
+.event-02 p {
+    width: 750px;
+    padding: 30px;
+    margin-top: -50px;
+    color: black;
 }
 
 /* ======================== */

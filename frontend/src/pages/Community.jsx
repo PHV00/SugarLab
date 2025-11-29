@@ -3,6 +3,8 @@ import Cliente1 from "../assets/image/daniel.jpg"
 import Cliente2 from "../assets/image/pedro.jpg"
 import Cliente3 from "../assets/image/paulo.jpg"
 import WhatsAppLogo from "../assets/image/WhatsAppLogo.png"
+import Evento01 from "../assets/image/Evento01-Redimensioned.png"
+import Evento02 from "../assets/image/Evento02.jpg"
 import "./Community.css"
 
 export default function Community() {
@@ -33,7 +35,7 @@ export default function Community() {
       </section>
 
       {/* Feedbacks */}
-      <section>
+      <section className="feedbacks-section">
         <div className="feedbacks-title">
           <h1>Relatos da comunidade</h1>
         </div>
@@ -86,6 +88,39 @@ export default function Community() {
                 </p>
               </div>
             <p className="mt-6 text-gray-600 italic"></p>
+          </div>
+        </div>
+      </section>
+
+      {/* Eventos */}
+      <section className="events-section">
+        <div className="events-title">
+          <h1>Eventos</h1>
+        </div>
+
+        <div className="events-content">
+          <div className="event-01">
+            <img
+              src={Evento01}
+              alt=""
+              width={750}
+              />
+            <h1>Sabores do Mundo: Festival Gastronômico</h1>
+            <p>
+              Centro de Convenções Gourmet, você poderá explorar a riqueza da culinária global em um único lugar. Com degustações de pratos típicos de diversos países, workshops e masterclasses com chefs renomados e muito mais...
+            </p>
+          </div>
+
+          <div className="event-02">
+            <img
+              src={Evento02}
+              alt=""
+              width={750}
+            />
+            <h1>Mundo Açucarado: Festival de Doces</h1>
+            <p>
+              O festival também oferece oficinas práticas de confeitaria, competições emocionantes e a chance de explorar tendências como doces saudáveis e veganos. 
+            </p>
           </div>
         </div>
       </section>
