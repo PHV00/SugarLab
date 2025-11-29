@@ -2,6 +2,7 @@ import Comunidade from "../assets/image/Comunidade.jpg";
 import Cliente1 from "../assets/image/daniel.jpg"
 import Cliente2 from "../assets/image/pedro.jpg"
 import Cliente3 from "../assets/image/paulo.jpg"
+import WhatsAppLogo from "../assets/image/WhatsAppLogo.png"
 import "./Community.css"
 
 export default function Community() {
@@ -9,16 +10,33 @@ export default function Community() {
     <main className="min-h-screen bg-[#0d1c18] text-white font-sans overflow-x-hidden">
 
       {/* Imagem principal */}
-      <section className="w-screen flex justify-center">
+      <section className="hero">
         <img
           src={Comunidade}
           alt="Communidade"
-          className="w-screen h-auto object-cover rounded-none shadow-lg"
+          className="comunidade-image"
         /> 
+
+        {/* Whatsapp */}
+        <div className="whatsapp-section">
+          <div className="whatsapp-components">
+            <h1><b>Junte-se à nossa comunidade no WhatsApp!</b></h1>
+            <p>Participe do nosso grupo exclusivo para trocar dicas, receitas e experiências com outros entusiastas da confeitaria. Clique no link abaixo para entrar:</p>
+            <button className="group-whatsapp-button">
+              <a href="https://chat.whatsapp.com/KF6bX4YJ3YkD3kL5E6Z7gH" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
+                <img src={WhatsAppLogo} alt="WhatsApp Logo" width={40} />
+                Entrar no Grupo do WhatsApp
+              </a>
+            </button>
+          </div>
+        </div>
       </section>
 
       {/* Feedbacks */}
       <section>
+        <div className="feedbacks-title">
+          <h1>Relatos da comunidade</h1>
+        </div>
         <div className="clients-photos">
             <img
             src={Cliente1}
@@ -41,34 +59,30 @@ export default function Community() {
         
         <div className="main-feedback-part">
             <div className="feedback-name-1">
-            <p>
-              <strong>Daniel Douglas dos Santos</strong> <br />
-            </p>
+              <h1><b>Daniel Douglas dos Santos</b></h1> <br />
               <div className="feedback-text-1">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ab assumenda ut perspiciatis tempora doloribus accusamus fugiat veniam laborum! Reiciendis illo quod, a numquam quidem qui molestiae veniam consequatur totam.
+                  "Participar do curso foi transformador! Aprendi técnicas que antes pareciam impossíveis e hoje cozinho com muito mais confiança. Recomendo para todos que amam gastronomia!"
                 </p>
               </div>
             <p className="mt-6 text-gray-600 italic"></p>
           </div>
+
           <div className="feedback-name-2">
-            <p>
-              <strong>Pedro Henrique Vitoreti</strong> <br />
-            </p>
+              <h1><b>Pedro Henrique Vitoreti</b></h1> <br />
               <div className="feedback-text-2">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ab assumenda ut perspiciatis tempora doloribus accusamus fugiat veniam laborum! Reiciendis illo quod, a numquam quidem qui molestiae veniam consequatur totam.
+                  "O curso superou minhas expectativas! Além das receitas incríveis, os professores foram muito atenciosos e ajudaram em cada detalhe. Uma experiência que levarei para a vida!"
                 </p>
               </div>
             <p className="mt-6 text-gray-600 italic"></p>
           </div>
+          
           <div className="feedback-name-3">
-            <p>
-              <strong>Paulo Guilherme Winchester</strong> <br />
-            </p>
+              <h1><b>Paulo Guilherme Winchester</b></h1> <br />
               <div className="feedback-text-3">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ab assumenda ut perspiciatis tempora doloribus accusamus fugiat veniam laborum! Reiciendis illo quod, a numquam quidem qui molestiae veniam consequatur totam.
+                  "Eu sempre gostei de cozinhar, mas com o curso aprendi a fazer pratos profissionais. O ambiente foi acolhedor e me senti parte de uma verdadeira família culinária."
                 </p>
               </div>
             <p className="mt-6 text-gray-600 italic"></p>

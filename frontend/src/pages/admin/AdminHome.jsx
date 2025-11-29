@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import AdminLayout from "../../layouts/AdminLayout.jsx";
 import AdminSidebar from "./AdminSidebar.jsx";
+import "./AdminHome.css";
 
 export default function AdminHome(){
   return (

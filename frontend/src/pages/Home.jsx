@@ -75,7 +75,7 @@ export default function Home({
             </p>
               <div className="depoimento-text">
                 <p>
-                  <strong>Depoimento:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ab assumenda ut perspiciatis tempora doloribus accusamus fugiat veniam laborum! Reiciendis illo quod, a numquam quidem qui molestiae veniam consequatur totam.{depoimento || ""}
+                  <strong>Depoimento:</strong> O SugarLab nasceu do desejo de tornar o aprendizado da culinária acessível a todos que acreditam no poder de transformar ingredientes em emoção. Mais do que ensinar receitas, queremos inspirar histórias, conquistas e novas oportunidades. Criamos esta plataforma para que qualquer pessoa possa aprender com qualidade, obter certificação e descobrir o prazer de evoluir na gastronomia. O SugarLab é, acima de tudo, o reflexo de um sonho feito com amor e propósito.{depoimento || ""}
                 </p>
               </div>
             <p className="mt-6 text-gray-600 italic">{depoimento || ""}</p>

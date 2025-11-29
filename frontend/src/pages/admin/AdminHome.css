@@ -37,7 +37,7 @@ h1, .text-2xl {
 }
  
 /* Labels — sobrescreve classes tailwind text-gray-700 quando necessário */
-label, .text-gray-700 {
+label, .text-gray-700 , .text-lg {
   color: rgba(44, 44, 44, 0.697);
 }
  

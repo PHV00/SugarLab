@@ -1,53 +1,132 @@
+/* ======================== */
+/*   HERO (imagem + texto)  */
+/* ======================== */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: min(80vh, 750px);  /* altura controlada */
+    overflow: hidden;
+}
+
+.comunidade-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Texto sobre a imagem */
+.whatsapp-section {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 700px;
+    padding: 20px;
+}
+
+.whatsapp-section h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    text-align: center;
+    color: white;
+}
+
+.whatsapp-section p {
+    font-size: clamp(14px, 2vw, 18px);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.whatsapp-components {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.group-whatsapp-button {
+    background-color: #25D366;
+    padding: 12px 22px;
+    border-radius: 8px;
+    margin-top: 25px;
+    font-weight: bold;
+    font-size: clamp(16px, 2vw, 22px);
+    cursor: pointer;
+}
+
+.whatsapp-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+/* ======================== */
+/*      FEEDBACKS           */
+/* ======================== */
+
+.feedbacks-title h1 {
+    font-size: clamp(26px, 4vw, 50px);
+    text-align: center;
+    margin-top: 80px;
+    color: white;
+}
+
+/* Fotos */
 .clients-photos {
     display: flex;
-    padding: 10cap;
-    gap: 300px;
+    justify-content: center;
+    gap: clamp(30px, 8vw, 200px);
+    padding: 20px;
+    flex-wrap: wrap;
 }
-.client1-img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
+
+.clients-photos img {
+    width: clamp(80px, 12vw, 130px);
+    height: clamp(80px, 12vw, 130px);
+    border-radius: 50%;
 }
-.client2-img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-}
-.client3-img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-}
-.client1-img strong {
-    
-}
-.client2-img strong {
-  
-}
-.client3-img strong {
-  
-}
+
+/* Texto */
 .main-feedback-part {
     display: flex;
-    padding: 10cap;
-    margin-top: -200px;
-    gap: 80px;
+    justify-content: center;
+    gap: clamp(20px, 5vw, 80px);
+    flex-wrap: wrap;
+    padding: 20px;
 }
-.feedback-name-1 {
-    width: 350px;
+
+.main-feedback-part h1 {
+    font-size: clamp(18px, 3vw, 25px);
+    color: white;
 }
-.feedback-text-1 {
-    width: 350px;
+
+.main-feedback-part p {
+    max-width: 350px;
+    font-size: 16px;
 }
-.feedback-name-2 {
-    width: 350px;
-}
-.feedback-text-2 {
-    width: 350px;
-}
-.feedback-name-3 {
-    width: 350px;
-}
-.feedback-text-3 {
-    width: 350px;
+
+/* ======================== */
+/* MOBILE */
+/* ======================== */
+
+@media (max-width: 768px) {
+    .hero {
+        height: auto;
+    }
+
+    .whatsapp-section {
+        position: static;
+        transform: none;
+        margin-top: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .whatsapp-section h1,
+    .whatsapp-section p {
+        text-align: center;
+    }
 }
