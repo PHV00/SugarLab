@@ -35,7 +35,7 @@ export const api = {
     return http("GET", `/cursos`);
   },
   createCourse(payload) { 
-    return http("POST", `/newCurso/`, payload);
+    return http("POST", `/newCurso`, payload);
   },
   updateCourse(id, payload) {
     return http("PUT", `/edit/${id}`, payload);

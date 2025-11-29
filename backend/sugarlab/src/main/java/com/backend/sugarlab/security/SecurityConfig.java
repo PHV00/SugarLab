@@ -26,22 +26,21 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-            .csrf().disable()
-            .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-            .authorizeHttpRequests()
-                .requestMatchers(
-                    "/alimentos/v1/**",
-                    "/receitas/v1/**",
-                    "/cursos/v1/**" ,
-                    "/auth/**"
-                ).permitAll()
-                .anyRequest().authenticated();
+    http
+        .csrf(csrf -> csrf.disable())
+        .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers(
+                "/alimentos/v1/**",
+                "/receitas/v1/**",
+                "/cursos/v1/**",
+                "/auth/**"
+            ).permitAll()
+            .anyRequest().authenticated()
+        );
 
-        http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+    // http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
-        return http.build();
+    return http.build();
     }
 }

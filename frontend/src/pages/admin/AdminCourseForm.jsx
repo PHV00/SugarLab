@@ -78,15 +78,15 @@ export default function AdminCourseForm() {
       description: form.description?.trim(),
       summary: form.summary?.trim(),
       thumbnail_url: form.thumbnail_url?.trim(),
-      highlights: [], // opcional
+      highlights: JSON.stringify(form.highlights || []),
       includes: form.includes?.trim(),
       date_range: form.date_range?.trim(),
       time_range: form.time_range?.trim(),
       modality: form.modality?.trim(),
       workload_hours: form.workload_hours ? Number(form.workload_hours) : null,
-      price: null,
+      price: 0,
       featured: 0,
-      status: form.status || "published",
+      status: form.status === "published" ? "Publicado" : "Rascunho",
     };
 
     if (!payload.title) {
