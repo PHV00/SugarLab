@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import AdminLayout from "../../layouts/AdminLayout.jsx";
 import AdminSidebar from "./AdminSidebar.jsx";
 import { api } from "../../services/api";
-import "./AdminCoursesList.jsx";
+import "./AdminCoursesList.css";
 
 export default function AdminCoursesList() {
   const [items, setItems] = useState([]);
@@ -26,7 +26,7 @@ export default function AdminCoursesList() {
   return (
     <AdminLayout sidebar={<AdminSidebar />}>
       <div className="admin-home-container mb-6 flex items-center justify-between">
-        <Link to="/admin/cursos/novo" className="rounded-lg bg-[#192927] px-4 py-2 text-white">+ Novo curso</Link>
+        <Link to="/admin/cursos/novo" className="rounded-md bg-[#192927] px-4 py-4 text-white">+ Novo curso</Link>
       </div>
 
       {loading ? <div className="loading-message">Carregando…</div> : (
@@ -35,8 +35,8 @@ export default function AdminCoursesList() {
             <li key={c.id} className="flex items-center justify-between py-5">
               <span className="text-lg">{c.title}</span>
               <div className="flex gap-2">
-                <Link to={`/admin/cursos/${c.id}/editar`} className="rounded-md bg-[#142825] px-3 py-2 text-white">Editar</Link>
-                <button onClick={() => handleDelete(c.id)} className="rounded-md bg-[#142825] px-3 py-2 text-white">Excluir</button>
+                <Link to={`/admin/cursos/${c.id}/editar`} className="rounded-md bg-[#142825] px-4 py-4 text-white">Editar</Link>
+                <button onClick={() => handleDelete(c.id)} className="!rounded-md !bg-red-700 px-4 py-4 !text-white">Excluir</button>
               </div>
             </li>
           ))}

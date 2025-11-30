@@ -10,7 +10,7 @@ const Header = () => {
     const [mobileMenuClicked, setMobileMenuClicked] = useState(false)
     const navigate = useNavigate();
      
-    const {isLogged, logout} = useContext(AuthContext);
+    const {isLogged, logout, role} = useContext(AuthContext);
 
     return(
         <nav id='headerClass' className='flex justify-between relative'>
@@ -35,6 +35,13 @@ const Header = () => {
                         ) : (
                             <NavLink to={'/login'}>{navOptions[5]}</NavLink>
                         )}
+                        {role == "ADMIN"?
+                        (
+                            <NavLink to={'/admin/cursos'} >Gerenciamento de Cursos</NavLink>
+                        ):(
+                            <>
+                            </>
+                        )}
                     </div>
                 )}
             </div>
@@ -45,6 +52,14 @@ const Header = () => {
                 <NavLink className="navOptions" to={"/comunidade"}>{navOptions[1]}</NavLink>
                 <NavLink className="navOptions" to={"/sobre"}>{navOptions[2]}</NavLink>
                 <NavLink className="navOptions" to={"/assinatura"}>{navOptions[3]}</NavLink>
+                {role == "ADMIN"?(
+                    <>
+                    <NavLink className="navOptions" to={'/admin/cursos'} >Gerenciamento de Cursos</NavLink>
+                    </>
+                ):(
+                    <>
+                    </>
+                )}
             </div>
             <div className="userBtns hidden lg:flex gap-2">
                 {isLogged ? (

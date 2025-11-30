@@ -37,7 +37,7 @@ export default function Login() {
 
             if (res.ok) {
                 const data = await res.json();
-                login(data.token);
+                login(data);
                 alert("Usuário logado com sucesso!");
                 setFormData({
                     email: "",

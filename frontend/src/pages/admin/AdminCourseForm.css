@@ -119,9 +119,9 @@ select {
 }
  
 /* Fallback para links/elementos com pouca cor */
-a, button, label {
+a, label {
   text-decoration: none;
-  color: inherit;
+  /* color: inherit; */
 }
 
 .form-section {
