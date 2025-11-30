@@ -26,6 +26,8 @@ const slugify = (s = "") =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
+const files = import.meta.glob('../../assets/image/*.{json,jpg,png}');
+
 export default function AdminCourseForm() {
   const { id } = useParams();
   const editing = !!id;
@@ -96,12 +98,12 @@ export default function AdminCourseForm() {
 
     if (editing) {
       await api.updateCourse(id, payload);
-      navigate("/admin/cursos");
     } else {
       await api.createCourse(payload);
-      navigate("/admin/cursos");
+      window.location.href = "/admin/cursos";
     }
 
+    navigate("/admin/cursos");
   }
 
   return (
@@ -133,13 +135,31 @@ export default function AdminCourseForm() {
           </L>
 
           <L label="Imagem:">
-            <input
+            {/* <input
               name="thumbnailUrl"
               value={form.thumbnailUrl}
               onChange={onChange}
               placeholder='Ex.: "Patisserie.jpg" ou URL https://...'
               className="input"
-            />
+            /> */}
+            <select
+              name="thumbnailUrl"
+              value={form.thumbnailUrl}
+              onChange={onChange}
+              className="input"
+            >
+              {
+                Object.keys(files).map(filePath => {
+                  const fileName = filePath.substring(filePath.lastIndexOf('/') + 1);
+                  
+                  return (
+                    <option key={fileName} value={fileName}>
+                      {fileName}
+                    </option>
+                  );
+                })
+              }
+            </select>
           </L>
         </div>
 
