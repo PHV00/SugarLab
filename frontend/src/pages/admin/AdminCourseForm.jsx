@@ -165,6 +165,7 @@ export default function AdminCourseForm() {
           <FieldWithIcon
             label="Data"
             name="dateRange"
+            type="date"
             value={form.dateRange}
             onChange={onChange}
           >
@@ -174,6 +175,7 @@ export default function AdminCourseForm() {
           <FieldWithIcon
             label="Horário"
             name="timeRange"
+            type="time"
             value={form.timeRange}
             onChange={onChange}
           >
