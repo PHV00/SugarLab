@@ -12,20 +12,6 @@
   --ac-button-text: #ffffff;
 }
  
-/* Modo escuro — se usuário preferir dark theme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --ac-text: #ffffff;
-    --ac-muted: #cbd5db;
-    --ac-input-bg: #1d483e;
-    --ac-input-border: rgba(255,255,255,0.08);
-    --ac-input-placeholder: rgba(255,255,255,0.6);
-    --ac-icon: #cfe9e4;
-    --ac-button-bg: #1c3b36;
-    --ac-button-text: #ffffff;
-  }
-}
- 
 /* Aplica cor base a título e ao formulário (a selector usa a sua classe/estrutura atual) */
 form[class*="md:grid-cols"] {
   color: var(--ac-text);
@@ -135,9 +121,12 @@ a, button, label {
     border-radius: 5px;
     width: 100%;
     box-sizing: border-box;
-    
 }
 
 .btnCreate {
     padding: 30px;
+}
+
+.input-with-icon input {
+    padding-left: 2.7rem !important;
 }

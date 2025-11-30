@@ -106,9 +106,9 @@ export default function AdminCourseForm() {
   return (
     <AdminLayout sidebar={<AdminSidebar />}>
 
-      <form onSubmit={onSubmit} className="form-section grid gap-6 md:grid-cols-[1fr_420px]">
+      <form onSubmit={onSubmit} className="form-section grid gap-6 md:grid-cols-[1fr_520px]">
         {/* Coluna esquerda */}
-        <div className="space-y-6">
+        <div className="left-input-section space-y-6">
           <L label="Nome do Curso:">
             <input
               name="title"
@@ -130,7 +130,7 @@ export default function AdminCourseForm() {
 
           <L label="Imagem:">
             <input
-              name="thumbnail_url"
+              name="thumbnailUrl"
               value={form.thumbnailUrl}
               onChange={onChange}
               placeholder='Ex.: "Patisserie.jpg" ou URL https://...'
@@ -140,10 +140,11 @@ export default function AdminCourseForm() {
         </div>
 
         {/* Coluna direita com ícones */}
-        <div className="space-y-4">
+        <div className="input-with-icon right-inputs right-input-section space-y-4">
           <FieldWithIcon
-            label="Data"
-            name="date_range"
+            label="Data:"
+            name="dateRange"
+            type="date"
             value={form.dateRange}
             onChange={onChange}
           >
@@ -151,8 +152,9 @@ export default function AdminCourseForm() {
           </FieldWithIcon>
 
           <FieldWithIcon
-            label="Horário"
-            name="time_range"
+            label="Horário:"
+            name="timeRange"
+            type="time"
             value={form.timeRange}
             onChange={onChange}
           >
@@ -160,7 +162,7 @@ export default function AdminCourseForm() {
           </FieldWithIcon>
 
           <FieldWithIcon
-            label="Modalidade"
+            label="Modalidade:"
             name="modality"
             value={form.modality}
             onChange={onChange}
@@ -169,8 +171,8 @@ export default function AdminCourseForm() {
           </FieldWithIcon>
 
           <FieldWithIcon
-            label="Carga horária"
-            name="workload_hours"
+            label="Carga horária:"
+            name="workloadHours"
             value={form.workloadHours}
             onChange={onChange}
             type="number"
@@ -179,8 +181,9 @@ export default function AdminCourseForm() {
           </FieldWithIcon>
 
           <FieldWithIcon
-            label="Inclui"
+            label="Inclui:"
             name="includes"
+            type="file"
             value={form.includes}
             onChange={onChange}
           >
@@ -188,7 +191,7 @@ export default function AdminCourseForm() {
           </FieldWithIcon>
 
           <div className="pt-2">
-            <label className="block text-sm text-gray-700 mb-1">Status</label>
+            <label className="block text-sm text-gray-700 mb-1">Status:</label>
             <select
               name="status"
               value={form.status}
