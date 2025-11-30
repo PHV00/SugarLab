@@ -11,16 +11,21 @@ const modules = import.meta.glob("../assets/image/*", {
   eager: true,
   as: "url",
 });
+
 const resolveAssetUrl = (input) => {
   if (!input) return "/placeholder-course.jpg";
   if (/^https?:\/\//i.test(input) || input.startsWith("/")) return input;
+  
   const name = input.replace(/^.*[\\/]/, "").toLowerCase();
+  
   for (const p in modules) {
     const file = p.split("/").pop().toLowerCase();
     if (file === name) return modules[p];
   }
+  
   return "/placeholder-course.jpg";
 };
+
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);
@@ -33,12 +38,12 @@ export default function Courses() {
       const data = await api.listPublishedCourses(); // GET /api/courses?status=published
       const mapped = (data || []).map((c) => ({
         ...c,
-        thumbnailUrl: resolveAssetUrl(c.thumbnail_url || c.thumbnailUrl || ""),
+        thumbnailUrl: resolveAssetUrl(c.thumbnailUrl || ""),
         details: {
-          dateRange: c.date_range,
-          timeRange: c.time_range,
+          dateRange: c.dateRange,
+          timeRange: c.timeRange,
           modality: c.modality,
-          workloadHours: c.workload_hours,
+          workloadHours: c.workloadHours,
           includes: c.includes,
         },
       }));

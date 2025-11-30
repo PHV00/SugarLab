@@ -26,6 +26,8 @@ const slugify = (s = "") =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
+const files = import.meta.glob('../../assets/image/*.{json,jpg,png}');
+
 export default function AdminCourseForm() {
   const { id } = useParams();
   const editing = !!id;
@@ -69,6 +71,28 @@ export default function AdminCourseForm() {
     setForm((f) => ({ ...f, [name]: value }));
   }
 
+  const onChangeFile = (e) => {
+    const file = e.target.files[0];
+    setForm({ ...form, video: file });
+  };
+
+  const handleSubmit = async () => {
+    const formData = new FormData();
+    formData.append("file", form.video);
+
+    const response = await fetch("http://localhost:8080/cursos/v1/upload-video", {
+      method: "POST",
+      body: formData
+    });
+
+    const urlVideo = await response.text(); // backend te manda uma string
+    console.log("URL do vídeo:", urlVideo);
+
+    // salva no estado se quiser
+    setForm((prev) => ({ ...prev, videoUrl: urlVideo }));
+  };
+
+
   async function onSubmit(e) {
     e.preventDefault();
 
@@ -77,16 +101,16 @@ export default function AdminCourseForm() {
       title: form.title?.trim(),
       description: form.description?.trim(),
       summary: form.summary?.trim(),
-      thumbnailUrl: form.thumbnail_url?.trim(),
-      highlights: [], // opcional
+      thumbnailUrl: form.thumbnailUrl?.trim(),
+      highlights: "{}", // opcional
       includes: form.includes?.trim(),
       dateRange: form.dateRange?.trim(),
       timeRange: form.timeRange?.trim(),
       modality: form.modality?.trim(),
       workloadHours: form.workloadHours ? Number(form.workloadHours) : null,
-      price: null,
+      price: 0,
       featured: 0,
-      status: form.status || "published",
+      status: form.status === "published" ? "Publicado" : "Rascunho",
     };
 
     if (!payload.title) {
@@ -94,13 +118,18 @@ export default function AdminCourseForm() {
       return;
     }
 
-    if (editing) {
-      await api.updateCourse(id, payload);
-    } else {
-      await api.createCourse(payload);
-    }
+    try {
+      if (editing) {
+        await api.updateCourse(id, payload);
+      } else {
+        await api.createCourse(payload);
+      }
 
-    navigate("/admin/cursos");
+      navigate("/admin/cursos");
+    } catch (error) {
+      console.error("Erro ao salvar o curso:", error);
+      alert("Erro ao salvar o curso. Tente novamente.");
+    }
   }
 
   return (
@@ -128,15 +157,35 @@ export default function AdminCourseForm() {
             />
           </L>
 
-          <L label="Imagem:">
-            <input
+          <L label="Capa:">
+            <select
               name="thumbnailUrl"
               value={form.thumbnailUrl}
               onChange={onChange}
-              placeholder='Ex.: "Patisserie.jpg" ou URL https://...'
               className="input"
-            />
+            >
+              {
+                Object.keys(files).map(filePath => {
+                  const fileName = filePath.substring(filePath.lastIndexOf('/') + 1);
+                  
+                  return (
+                    <option key={fileName} value={fileName}>
+                      {fileName}
+                    </option>
+                  );
+                })
+              }
+            </select>
           </L>
+
+          <FieldWithIcon
+            label="Vídeo:"
+            name="video"
+            type="file"
+            onChange={(e) => onChangeFile(e)}
+            onSubmit={handleSubmit}
+          >
+          </FieldWithIcon>
         </div>
 
         {/* Coluna direita com ícones */}

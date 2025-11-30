@@ -1,3 +1,7 @@
-.courses-page-title, .courses-page-subtitle {
+.courses-page-title {
+    color: #ffffff;
+}
+
+.courses-page-subtitle {
     color: #ffffff;
 }

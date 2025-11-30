@@ -2,3 +2,30 @@
     font-size: 1.25rem;
     color: #555;
 }
+
+.courseNameButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem;
+    border: 1px solid #e5e7eb;
+}
+
+.btnsManageCourse {
+    display: flex;
+    margin-right: 25px;
+    gap: 0.5rem;
+}
+
+.btnEditCourse {
+    background-color: #2a9d8f;
+    width: 75px;
+    text-align: center;
+    border-radius: 0.375rem;
+}
+
+.btnDeleteCourse {
+    background-color: #af3224;
+    width: 75px;
+    border-radius: 0.375rem;
+}

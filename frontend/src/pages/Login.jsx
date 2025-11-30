@@ -2,8 +2,11 @@ import './login.css';
 import Logo from "../assets/image/SugarLab.png";
 import useFetch from "../hooks/useFetch";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+
+    const navigate = useNavigate();
     
     const [formData, setFormData] = useState({
         email: "",
@@ -20,6 +23,7 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
             const res = await fetch("http://localhost:8080/auth/login", {
                 method: "POST",
@@ -29,15 +33,21 @@ export default function Login() {
                 body: JSON.stringify(formData),
             });
 
-            if (res.ok) {
-                alert("Usuário logado com sucesso!");
-                setFormData({
-                    email: "",
-                    senha: ""
-                });
-            } else {
+            if (!res.ok) {
                 alert("Erro ao realizar login!");
+                return;
             }
+
+            const data = await res.json();
+
+            // SALVA NO LOCALSTORAGE
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", data.user);
+            localStorage.setItem("admin", data.admin);
+
+            alert("Usuário logado com sucesso!");
+
+            navigate('/');
         } catch (err) {
             console.error("Erro:", err);
             alert("Erro de conexão com o servidor");
