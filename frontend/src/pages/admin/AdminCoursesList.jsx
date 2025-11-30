@@ -19,6 +19,7 @@ export default function AdminCoursesList() {
     if (!confirm("Excluir este curso?")) return;
     await api.deleteCourse(id);
     await load();
+    window.location.href = "/admin/cursos";
   }
 
   return (
