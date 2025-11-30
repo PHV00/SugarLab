@@ -17,3 +17,7 @@ services:
 
 volumes:
   mysql_data:
+
+# Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+# npm run dev
+# npm spring-boot:run     
