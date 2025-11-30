@@ -17,11 +17,14 @@ public class JwtUtil {
     @Value("${jwt.expiration}")
     private Long expiration;
 
-    // Gera uma chave segura para HS512
-    private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+    @Value("${jwt.secret}")
+    private String secret;
+
+    // private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
 
     private Key getSigningKey() {
-        return key;
+        return Keys.hmacShaKeyFor(secret.getBytes());
+        // return key;
     }
 
     public String generateToken(String email) {

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.backend.sugarlab.DTO.CursoCadastroDto;
 import com.backend.sugarlab.entity.Curso;
@@ -17,18 +18,12 @@ public class CursoController {
 
     @Autowired
     private CursoService cursoService;
-
-    @PostMapping("/newCurso")
-    public ResponseEntity<Curso> createCurso(@RequestBody CursoCadastroDto dto){
-        Curso novoCurso = cursoService.criarCurso(dto);
-        return ResponseEntity.ok(novoCurso);
-    }
-
+    
     @GetMapping("/cursos")
     public ResponseEntity<List<Curso>> getAllCursos(){
         return ResponseEntity.ok(cursoService.resgatarTodosCursos());
     }
-
+    
     @GetMapping("/cursos/titulo")
     public ResponseEntity<Curso> getOneCurso(@RequestParam String title){
         try {
@@ -39,6 +34,24 @@ public class CursoController {
         }
     }
 
+    @GetMapping("/curso/{id}")
+    public ResponseEntity<Curso> getCourseById(@PathVariable Integer id) { // Long e não Integer
+        try {
+            Curso curso = cursoService.resgatarCursoPorId(id);
+            return ResponseEntity.ok(curso);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/newCurso")
+    public ResponseEntity<Curso> createCurso(@RequestBody CursoCadastroDto dto){
+        Curso novoCurso = cursoService.criarCurso(dto);
+        return ResponseEntity.ok(novoCurso);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/edit/{id}")
     public ResponseEntity<Curso> editCurso(@PathVariable Integer id, @RequestBody CursoCadastroDto dto){
         try {
@@ -49,6 +62,7 @@ public class CursoController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/curso/{id}")
     public ResponseEntity<Void> deleteCurso(@PathVariable Integer id){
         try {
@@ -58,15 +72,5 @@ public class CursoController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    @GetMapping("/curso/{id}")
-    public ResponseEntity<Curso> getCourseById(@PathVariable Integer id) { // Long e não Integer
-    try {
-        Curso curso = cursoService.resgatarCursoPorId(id);
-        return ResponseEntity.ok(curso);
-    } catch (RuntimeException e) {
-        return ResponseEntity.notFound().build();
-    }
-}
 
 }

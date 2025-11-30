@@ -96,12 +96,12 @@ export default function AdminCourseForm() {
 
     if (editing) {
       await api.updateCourse(id, payload);
+      navigate("/admin/cursos");
     } else {
       await api.createCourse(payload);
-      window.location.href = "/admin/cursos";
+      navigate("/admin/cursos");
     }
 
-    navigate("/admin/cursos");
   }
 
   return (
