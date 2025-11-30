@@ -119,3 +119,25 @@ a, button, label {
   text-decoration: none;
   color: inherit;
 }
+
+.form-section {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+}
+
+.form-section input {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    
+}
+
+.btnCreate {
+    padding: 30px;
+}

@@ -82,23 +82,6 @@ export default function Community() {
             <p className="mt-6 text-gray-600 italic"></p>
           </div>
         </div>
-        
-        <div className="main-feedback-part">
-            <div className="feedback-name-1">
-              <div className="feedback-text-1">
-              </div>
-          </div>
-
-          <div className="feedback-name-2">
-              <div className="feedback-text-2">
-              </div>
-          </div>
-          
-          <div className="feedback-name-3">
-              <div className="feedback-text-3">
-              </div>
-          </div>
-        </div>
       </section>
 
       {/* Eventos */}

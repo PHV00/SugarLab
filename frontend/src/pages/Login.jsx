@@ -30,13 +30,13 @@ export default function Login() {
             });
 
             if (res.ok) {
-                alert("Usuário registrado com sucesso!");
+                alert("Usuário logado com sucesso!");
                 setFormData({
                     email: "",
                     senha: ""
                 });
             } else {
-                alert("Erro ao registrar usuário");
+                alert("Erro ao realizar login!");
             }
         } catch (err) {
             console.error("Erro:", err);

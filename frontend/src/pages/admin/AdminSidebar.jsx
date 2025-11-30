@@ -1,19 +1,23 @@
 import { NavLink } from "react-router-dom";
+import "./AdminSidebar.css";
+import Logout from "../../assets/image/Logout.png";
 
 export default function AdminSidebar() {
   const link = ({ isActive }) =>
-    `block px-4 py-3 text-sm rounded-lg mx-3 my-1 ${
-      isActive ? "bg-[#142825] text-white" : "text-gray-700 hover:bg-gray-50"
+    `text-sm ${
+      isActive ? "text-color-#578F88" : "text-gray-700 hover:bg-gray-50"
     }`;
 
   return (
-    <div className="py-4">
-      <div className="px-4 pb-3 text-xs font-semibold text-gray-500">ADMINISTRAÇÃO</div>
+    <div className="sidebar-text">
+      <p>ADMINISTRAÇÃO</p>
       <NavLink to="/admin" className={link}>Início</NavLink>
       <NavLink to="/admin/cursos" className={link}>Cursos</NavLink>
       <NavLink to="/admin/cursos/novo" className={link}>Novo curso</NavLink>
-      <div className="px-4 pt-3 text-xs font-semibold text-gray-500">Outros</div>
-      <button className="mx-4 mt-2 text-red-500 text-sm">Logout</button>
+      <button className="btnLogout">
+        <img src={Logout} alt="Logout Icon" />
+        Sair
+      </button>
     </div>
   );
 }

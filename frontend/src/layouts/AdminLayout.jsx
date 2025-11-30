@@ -8,24 +8,15 @@ import Footer from "../components/Footer/Footer.jsx";
 
 export default function AdminLayout({ sidebar, children }) {
   return (
-    <>
-      {/* <Header /> */}
-      <main className="min-h-screen bg-[#142825] pt-10 pb-20 px-4">
-        <div className="mx-auto w-full max-w-7xl">
-          <div className="rounded-2xl bg-white shadow-xl ring-1 ring-black/5 p-6 md:p-8">
-            <div className="grid gap-6 md:grid-cols-[260px_1fr]">
-              {/* sidebar */}
-              <aside className="rounded-xl border border-gray-100 bg-white">
-                {sidebar}
-              </aside>
-              {/* conteúdo */}
-              <section>{children}</section>
-            </div>
-          </div>
-        </div>
-      </main>
-      {/* <Footer /> */}
-    </>
+    <div className="flex w-full min-h-screen">
+      {/* sidebar fixa */}
+      <div className="border-gray-100 bg-white w-[260px]">{sidebar}</div>
+
+      {/* conteúdo ocupa TODO o espaço restante */}
+      <div className="flex-1 bg-white p-10">
+        {children}
+      </div>
+    </div>
   );
 }
 AdminLayout.propTypes = { sidebar: PropTypes.node, children: PropTypes.node };

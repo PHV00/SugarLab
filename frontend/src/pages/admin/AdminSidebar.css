@@ -1,0 +1,24 @@
+.sidebar-text {
+    padding: 1rem 1rem 0.75rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280; /* text-gray-500 */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebar-text p {
+    font-size: 1rem;
+}
+
+.btnLogout {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.875rem; /* text-sm */
+    color: #ef4444; /* text-red-500 */
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
