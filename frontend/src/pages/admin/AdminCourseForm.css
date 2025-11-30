@@ -12,6 +12,9 @@
   --ac-button-text: #ffffff;
 }
  
+
+/* ESSE BLOCO */
+/* *************************** */
 /* Modo escuro — se usuário preferir dark theme */
 @media (prefers-color-scheme: dark) {
   :root {
@@ -25,7 +28,8 @@
     --ac-button-text: #ffffff;
   }
 }
- 
+/* *************************** */
+
 /* Aplica cor base a título e ao formulário (a selector usa a sua classe/estrutura atual) */
 form[class*="md:grid-cols"] {
   color: var(--ac-text);
@@ -119,3 +123,29 @@ a, button, label {
   text-decoration: none;
   color: inherit;
 }
+
+.form-section {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+}
+
+.form-section input {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btnCreate {
+    padding: 30px;
+}
+
+.input-with-icon input {
+    padding-left: 2.7rem !important;
+}
+

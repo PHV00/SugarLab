@@ -119,3 +119,22 @@ a, button, label {
   text-decoration: none;
   color: inherit;
 }
+
+.admin-home-container {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+}
+
+.manage-courses {
+    width: 175px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.vitrine-courses {
+    width: 100px;
+    text-align: center;
+    border-radius: 8px;
+}

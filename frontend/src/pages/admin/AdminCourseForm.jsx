@@ -108,13 +108,10 @@ export default function AdminCourseForm() {
 
   return (
     <AdminLayout sidebar={<AdminSidebar />}>
-      <h1 className="text-2xl font-semibold mb-8">
-        {editing ? "Editar Curso" : "Novo Curso"}
-      </h1>
 
-      <form onSubmit={onSubmit} className="grid gap-6 md:grid-cols-[1fr_420px]">
+      <form onSubmit={onSubmit} className="form-section grid gap-6 md:grid-cols-[1fr_520px]">
         {/* Coluna esquerda */}
-        <div className="space-y-6">
+        <div className="left-input-section space-y-6">
           <L label="Nome do Curso:">
             <input
               name="title"
@@ -164,7 +161,7 @@ export default function AdminCourseForm() {
         </div>
 
         {/* Coluna direita com ícones */}
-        <div className="space-y-4">
+        <div className="input-with-icon right-inputs right-input-section space-y-4">
           <FieldWithIcon
             label="Data"
             name="dateRange"
@@ -184,7 +181,7 @@ export default function AdminCourseForm() {
           </FieldWithIcon>
 
           <FieldWithIcon
-            label="Modalidade"
+            label="Modalidade:"
             name="modality"
             value={form.modality}
             onChange={onChange}
@@ -203,16 +200,17 @@ export default function AdminCourseForm() {
           </FieldWithIcon>
 
           <FieldWithIcon
-            label="Inclui"
+            label="Atualize anexo:"
             name="includes"
-            value={form.includes}
+            type="file"
             onChange={onChange}
           >
             <DocIcon />
           </FieldWithIcon>
 
+
           <div className="pt-2">
-            <label className="block text-sm text-gray-700 mb-1">Status</label>
+            <label className="block text-sm text-gray-700 mb-1">Status:</label>
             <select
               name="status"
               value={form.status}
@@ -224,10 +222,10 @@ export default function AdminCourseForm() {
             </select>
           </div>
 
-          <div className="pt-3">
+          <div className="btnCreate">
             <button
               type="submit"
-              className="float-right rounded-md bg-[#142825] px-7 py-2.5 text-black hover:bg-[#1c3b36] active:scale-[.99] transition"
+              className="pt-3 float-right rounded-md bg-[#142825] px-7 py-2.5 text-black hover:bg-[#1c3b36] active:scale-[.99] transition"
             >
               {editing ? "Salvar" : "Criar"}
             </button>

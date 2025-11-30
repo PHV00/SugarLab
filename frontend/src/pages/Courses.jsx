@@ -5,6 +5,7 @@ import Footer from "../components/Footer/Footer.jsx";
 import CourseGrid from "../components/CourseCard/CourseGrid.jsx";
 import CourseDetailsModal from "../components/CourseCard/CourseDetailsModal.jsx";
 import { api } from "../services/api";
+import "./Courses.css";
 
 const modules = import.meta.glob("../assets/image/*", {
   eager: true,
@@ -64,8 +65,8 @@ export default function Courses() {
      <div className="h-6"></div> 
      <div className="w-full max-w-7xl px-10 flex flex-col items-center text-white">
      <div className="h-2"></div>
-     <h1 className="text-4xl font-bold mb-4 text-center">Nossos Cursos</h1>
-     <p className="text-lg text-white/80 leading-relaxed text-center max-w-4xl mx-auto mb-16">
+     <h1 className="courses-page-title text-4xl font-bold mb-4 text-center">Nossos Cursos</h1>
+     <p className="courses-page-subtitle text-lg text-white/80 leading-relaxed text-center max-w-4xl mx-auto mb-16">
       Explore nossas opções e aprenda técnicas incríveis para transformar sua
       paixão pela confeitaria em arte.
      </p>

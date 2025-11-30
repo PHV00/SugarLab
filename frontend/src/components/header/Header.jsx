@@ -1,26 +1,16 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import './header.css'
 import logo from '../../assets/image/SugarLab.png';
 import HamburguerMenu from '../icons/HamburguerMenu';
+import { AuthContext } from '../../context/AuthContext';
 
 const Header = () => {
     const navOptions = ['Cursos', 'Comunidade', 'Sobre Nós', 'Assinatura', 'Cadastro', 'Login']
     const [mobileMenuClicked, setMobileMenuClicked] = useState(false)
     const navigate = useNavigate();
      
-    const [hasToken, setHasToken] = useState(false);
-
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        setHasToken(!!token);
-    }, []);
-
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        setHasToken(false);
-        window.location.href = "/";
-    };
+    const {isLogged, logout} = useContext(AuthContext);
 
     return(
         <nav id='headerClass' className='flex justify-between relative'>
@@ -40,7 +30,7 @@ const Header = () => {
                         <NavLink to={'/sobre'}>{navOptions[2]}</NavLink>
                         <NavLink to={'/assinatura'}>{navOptions[3]}</NavLink>
                         <NavLink to={'/registro'}>{navOptions[4]}</NavLink>
-                        {hasToken ? (
+                        {isLogged ? (
                             <NavLink to={'/'} onClick={handleLogout}>Logout</NavLink>
                         ) : (
                             <NavLink to={'/login'}>{navOptions[5]}</NavLink>
@@ -57,8 +47,8 @@ const Header = () => {
                 <NavLink className="navOptions" to={"/assinatura"}>{navOptions[3]}</NavLink>
             </div>
             <div className="userBtns hidden lg:flex gap-2">
-                {hasToken ? (
-                    <button className='btnUser w-20 text-white cursor-pointer' to={'/'} onClick={handleLogout}>Logout</button>
+                {isLogged ? (
+                    <button className='btnUser w-20 text-white cursor-pointer' to={'/'} onClick={logout}>Logout</button>
                 ) : (
                     <button className='btnUser w-20 text-white cursor-pointer' onClick={() => navigate("/login")}>Login</button>
                 )}
