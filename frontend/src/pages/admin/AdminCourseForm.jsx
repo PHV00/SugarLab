@@ -71,28 +71,6 @@ export default function AdminCourseForm() {
     setForm((f) => ({ ...f, [name]: value }));
   }
 
-  const onChangeFile = (e) => {
-    const file = e.target.files[0];
-    setForm({ ...form, video: file });
-  };
-
-  const handleSubmit = async () => {
-    const formData = new FormData();
-    formData.append("file", form.video);
-
-    const response = await fetch("http://localhost:8080/cursos/v1/upload-video", {
-      method: "POST",
-      body: formData
-    });
-
-    const urlVideo = await response.text(); // backend te manda uma string
-    console.log("URL do vídeo:", urlVideo);
-
-    // salva no estado se quiser
-    setForm((prev) => ({ ...prev, videoUrl: urlVideo }));
-  };
-
-
   async function onSubmit(e) {
     e.preventDefault();
 
@@ -110,7 +88,7 @@ export default function AdminCourseForm() {
       workloadHours: form.workloadHours ? Number(form.workloadHours) : null,
       price: 0,
       featured: 0,
-      status: form.status === "published" ? "Publicado" : "Rascunho",
+      status: "Publicado",
     };
 
     if (!payload.title) {
@@ -177,15 +155,6 @@ export default function AdminCourseForm() {
               }
             </select>
           </L>
-
-          <FieldWithIcon
-            label="Vídeo:"
-            name="video"
-            type="file"
-            onChange={(e) => onChangeFile(e)}
-            onSubmit={handleSubmit}
-          >
-          </FieldWithIcon>
         </div>
 
         {/* Coluna direita com ícones */}
@@ -230,27 +199,13 @@ export default function AdminCourseForm() {
           </FieldWithIcon>
 
           <FieldWithIcon
-            label="Inclui:"
+            label="Atualize anexo:"
             name="includes"
             type="file"
-            value={form.includes}
             onChange={onChange}
           >
             <DocIcon />
           </FieldWithIcon>
-
-          <div className="pt-2">
-            <label className="block text-sm text-gray-700 mb-1">Status:</label>
-            <select
-              name="status"
-              value={form.status}
-              onChange={onChange}
-              className="input"
-            >
-              <option value="published">Publicado</option>
-              <option value="draft">Rascunho</option>
-            </select>
-          </div>
 
           <div className="btnCreate">
             <button

@@ -1,8 +1,9 @@
 import './login.css';
 import Logo from "../assets/image/SugarLab.png";
 import useFetch from "../hooks/useFetch";
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from '../context/AuthContext.jsx';
 
 export default function Login() {
 
@@ -12,6 +13,8 @@ export default function Login() {
         email: "",
         senha: ""
     });
+    
+    const { login } = useContext(AuthContext); 
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -33,21 +36,20 @@ export default function Login() {
                 body: JSON.stringify(formData),
             });
 
-            if (!res.ok) {
+            if (res.ok) {
+                const data = await res.json();
+                login(data);
+                alert("Usuário logado com sucesso!");
+                setFormData({
+                    email: "",
+                    senha: ""
+                });
+                navigate("/");
+
+            } else {
                 alert("Erro ao realizar login!");
                 return;
             }
-
-            const data = await res.json();
-
-            // SALVA NO LOCALSTORAGE
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("user", data.user);
-            localStorage.setItem("admin", data.admin);
-
-            alert("Usuário logado com sucesso!");
-
-            navigate('/');
         } catch (err) {
             console.error("Erro:", err);
             alert("Erro de conexão com o servidor");

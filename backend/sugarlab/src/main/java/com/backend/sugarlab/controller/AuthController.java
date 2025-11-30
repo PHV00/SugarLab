@@ -45,18 +45,13 @@ public class AuthController {
             throw new RuntimeException("Credenciais inválidas");
         }
 
-        System.out.println("EH ADMIN? " + user.getEhAdmin());
         String token = jwtUtil.generateToken(user);
 
         Map<String, Object> response = new HashMap<>();
         response.put("token", token);
         response.put("type", "Bearer");
         response.put("user", user.getNome());
-        response.put("admin", user.getEhAdmin());
-
-        System.out.println(token);
-        System.out.println(user.getNome());
-        System.out.println(user.getEhAdmin());
+        response.put("role", user.getEhAdmin());
         return response;
     }
 

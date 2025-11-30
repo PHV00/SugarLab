@@ -15,6 +15,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
+import com.backend.sugarlab.entity.Usuario;
+
 @Component
 public class JwtUtil {
 
@@ -32,17 +34,15 @@ public class JwtUtil {
     }
 
     public String generateToken(Usuario user) {
-        Map<String, Object> claims = new HashMap<>();
-
-        // Adiciona a role no token
-        claims.put("admin", user.getEhAdmin());
+        Date now = new Date();
+        Date expiryDate = new Date(now.getTime() + expiration);
 
         return Jwts.builder()
-                .setClaims(claims)
                 .setSubject(user.getEmail())
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expiration)) // seu tempo aqui
-                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .claim("ehAdmin", user.getEhAdmin())
+                .setIssuedAt(now)
+                .setExpiration(expiryDate)
+                .signWith(getSigningKey(), SignatureAlgorithm.HS512)
                 .compact();
     }
 

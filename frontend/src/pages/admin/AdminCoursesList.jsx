@@ -26,7 +26,7 @@ export default function AdminCoursesList() {
   return (
     <AdminLayout sidebar={<AdminSidebar />}>
       <div className="admin-home-container mb-6 flex items-center justify-between">
-        <Link to="/admin/cursos/novo" className="rounded-lg bg-[#192927] px-4 py-2 text-white">+ Novo curso</Link>
+        <Link to="/admin/cursos/novo" className="rounded-md bg-[#192927] px-4 py-4 text-white">+ Novo curso</Link>
       </div>
 
       {loading ? <div className="loading-message">Carregando…</div> : (
