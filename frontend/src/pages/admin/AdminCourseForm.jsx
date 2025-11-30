@@ -1,13 +1,4 @@
-/**
-* AdminCourseForm — cria/edita curso usando sua API Express/MySQL.
-* Campos mapeados exatamente para o backend:
-* slug, title, description, summary, thumbnail_url,
-* includes, date_range, time_range, modality, workload_hours, status.
-*
-* Observações:
-* - O select "status" vem pré-selecionado em "published" para já aparecer na vitrine.
-* - Se digitar somente o nome da imagem (ex.: "Natal.jpg"), coloque o arquivo em: src/assets/image/Natal.jpg
-*/
+
 
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -17,7 +8,6 @@ import AdminSidebar from "./AdminSidebar.jsx";
 import { api } from "../../services/api";
 import "./AdminCourseForm.css";
 
-// slug simples a partir do título
 const slugify = (s = "") =>
   s
     .toLowerCase()
