@@ -1,4 +1,4 @@
-import './userRegister.css';
+import './UserRegister.css';
 import Logo from "../assets/image/SugarLab.png";
 import useFetch from "../hooks/useFetch";
 import { useState } from "react";
