@@ -1,6 +1,5 @@
 import './UserRegister.css';
 import Logo from "../assets/image/SugarLab.png";
-import useFetch from "../hooks/useFetch";
 import { useState } from "react";
 
 export default function UserRegister() {
