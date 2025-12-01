@@ -3,7 +3,7 @@ name: Build and deploy JAR app to Azure Web App - sugarlab-backend
 on:
   push:
     branches:
-      - main
+      - azure
   workflow_dispatch:
 
 jobs:
