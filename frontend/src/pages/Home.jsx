@@ -2,7 +2,7 @@ import Principal from "../assets/image/Principal.jpg";
 import Patisserie from "../assets/image/Patisserri_cut.png";
 import Certificado from "../assets/image/Certificado.jpg";
 import Confeiteira from "../assets/image/Confeiteira.jpg";
-import "./home.css";
+import "./Home.css";
 
 export default function Home({
   nome,
