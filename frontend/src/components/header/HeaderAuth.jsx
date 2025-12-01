@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 import './headerauth.css'
 import logo from '../../assets/image/SugarLab.png';
-import HamburguerMenu from '../icons/HamburguerMenu';
+import HamburguerMenu from '../Icons/HamburguerMenu';
 import { useState } from 'react';
 
 const HeaderAuth = () => {

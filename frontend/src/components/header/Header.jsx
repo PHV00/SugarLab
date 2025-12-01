@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from "react";
 import './header.css'
 import logo from '../../assets/image/SugarLab.png';
-import HamburguerMenu from '../icons/HamburguerMenu';
+import HamburguerMenu from '../Icons/HamburguerMenu';
 import { AuthContext } from '../../context/AuthContext';
 
 const Header = () => {
