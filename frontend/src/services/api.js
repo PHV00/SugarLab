@@ -13,17 +13,20 @@ async function http(method, path, body) {
     body: body ? JSON.stringify(body) : undefined,
   });
 
-  console.log(res);
-
   if (!res.ok) throw new Error(await res.text());
+  
+  const contentType = res.headers.get("content-type");
+
+  if (!contentType || !contentType.includes("application/json")) {
+      return null;
+  }
+
   return res.json();
 }
 
-// ---------- PÚBLICO (vitrine) ----------
+  // ---------- PÚBLICO (vitrine) ----------
 export const api = {
   listPublishedCourses() {
-    // sua API filtra por status=published por padrão;
-    // deixo explícito para não haver dúvida.
     return http("GET", `/cursos`);
   },
   getCoursePublic(id) {
@@ -35,7 +38,7 @@ export const api = {
     return http("GET", `/cursos`);
   },
   createCourse(payload) { 
-    return http("POST", `/newCurso/`, payload);
+    return http("POST", `/newCurso`, payload);
   },
   updateCourse(id, payload) {
     return http("PUT", `/edit/${id}`, payload);

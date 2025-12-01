@@ -1,13 +1,13 @@
 /**
- * AdminCourseForm — cria/edita curso usando sua API Express/MySQL.
- * Campos mapeados exatamente para o backend:
- * slug, title, description, summary, thumbnail_url,
- * includes, date_range, time_range, modality, workload_hours, status.
- *
- * Observações:
- * - O select "status" vem pré-selecionado em "published" para já aparecer na vitrine.
- * - Se digitar somente o nome da imagem (ex.: "Natal.jpg"), coloque o arquivo em: src/assets/image/Natal.jpg
- */
+* AdminCourseForm — cria/edita curso usando sua API Express/MySQL.
+* Campos mapeados exatamente para o backend:
+* slug, title, description, summary, thumbnail_url,
+* includes, date_range, time_range, modality, workload_hours, status.
+*
+* Observações:
+* - O select "status" vem pré-selecionado em "published" para já aparecer na vitrine.
+* - Se digitar somente o nome da imagem (ex.: "Natal.jpg"), coloque o arquivo em: src/assets/image/Natal.jpg
+*/
 
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -15,6 +15,7 @@ import PropTypes from "prop-types";
 import AdminLayout from "../../layouts/AdminLayout.jsx";
 import AdminSidebar from "./AdminSidebar.jsx";
 import { api } from "../../services/api";
+import "./AdminCourseForm.css";
 
 // slug simples a partir do título
 const slugify = (s = "") =>
@@ -25,6 +26,8 @@ const slugify = (s = "") =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
+const files = import.meta.glob('../../assets/image/*.{json,jpg,png}');
+
 export default function AdminCourseForm() {
   const { id } = useParams();
   const editing = !!id;
@@ -34,13 +37,12 @@ export default function AdminCourseForm() {
     title: "",
     description: "",
     summary: "",
-    thumbnail_url: "",
-
+    thumbnailUrl: "",
     includes: "",
     dateRange: "",
-    time_range: "",
+    timeRange: "",
     modality: "",
-    workload_hours: "",
+    workloadHours: "",
     status: "published", // padrão para já aparecer na vitrine
   });
 
@@ -53,12 +55,12 @@ export default function AdminCourseForm() {
         title: data.title || "",
         description: data.description || "",
         summary: data.summary || "",
-        thumbnail_url: data.thumbnail_url || "",
+        thumbnailUrl: data.thumbnailUrl || "",
         includes: data.includes || "",
-        date_range: data.date_range || "",
-        time_range: data.time_range || "",
+        dateRange: data.dateRange || "",
+        timeRange: data.timeRange || "",
         modality: data.modality || "",
-        workload_hours: data.workload_hours ?? "",
+        workloadHours: data.workloadHours ?? "",
         status: data.status || "draft",
       });
     })();
@@ -77,16 +79,16 @@ export default function AdminCourseForm() {
       title: form.title?.trim(),
       description: form.description?.trim(),
       summary: form.summary?.trim(),
-      thumbnail_url: form.thumbnail_url?.trim(),
-      highlights: [], // opcional
+      thumbnailUrl: form.thumbnailUrl?.trim(),
+      highlights: "{}", // opcional
       includes: form.includes?.trim(),
-      date_range: form.date_range?.trim(),
-      time_range: form.time_range?.trim(),
+      dateRange: form.dateRange?.trim(),
+      timeRange: form.timeRange?.trim(),
       modality: form.modality?.trim(),
-      workload_hours: form.workload_hours ? Number(form.workload_hours) : null,
-      price: null,
+      workloadHours: form.workloadHours ? Number(form.workloadHours) : null,
+      price: 0,
       featured: 0,
-      status: form.status || "published",
+      status: "Publicado",
     };
 
     if (!payload.title) {
@@ -94,24 +96,26 @@ export default function AdminCourseForm() {
       return;
     }
 
-    if (editing) {
-      await api.updateCourse(id, payload);
-    } else {
-      await api.createCourse(payload);
-    }
+    try {
+      if (editing) {
+        await api.updateCourse(id, payload);
+      } else {
+        await api.createCourse(payload);
+      }
 
-    navigate("/admin/cursos");
+      navigate("/admin/cursos");
+    } catch (error) {
+      console.error("Erro ao salvar o curso:", error);
+      alert("Erro ao salvar o curso. Tente novamente.");
+    }
   }
 
   return (
     <AdminLayout sidebar={<AdminSidebar />}>
-      <h1 className="text-2xl font-semibold mb-8">
-        {editing ? "Editar Curso" : "Novo Curso"}
-      </h1>
 
-      <form onSubmit={onSubmit} className="grid gap-6 md:grid-cols-[1fr_420px]">
+      <form onSubmit={onSubmit} className="form-section grid gap-6 md:grid-cols-[1fr_520px]">
         {/* Coluna esquerda */}
-        <div className="space-y-6">
+        <div className="left-input-section space-y-6">
           <L label="Nome do Curso:">
             <input
               name="title"
@@ -131,39 +135,52 @@ export default function AdminCourseForm() {
             />
           </L>
 
-          <L label="Imagem:">
-            <input
-              name="thumbnail_url"
-              value={form.thumbnail_url}
+          <L label="Capa:">
+            <select
+              name="thumbnailUrl"
+              value={form.thumbnailUrl}
               onChange={onChange}
-              placeholder='Ex.: "Patisserie.jpg" ou URL https://...'
               className="input"
-            />
+            >
+              {
+                Object.keys(files).map(filePath => {
+                  const fileName = filePath.substring(filePath.lastIndexOf('/') + 1);
+                  
+                  return (
+                    <option key={fileName} value={fileName}>
+                      {fileName}
+                    </option>
+                  );
+                })
+              }
+            </select>
           </L>
         </div>
 
         {/* Coluna direita com ícones */}
-        <div className="space-y-4">
+        <div className="input-with-icon right-inputs right-input-section space-y-4">
           <FieldWithIcon
-            label="Data"
-            name="date_range"
-            value={form.date_range}
+            label="Data:"
+            name="dateRange"
+            type="date"
+            value={form.dateRange}
             onChange={onChange}
           >
             <CalendarIcon />
           </FieldWithIcon>
 
           <FieldWithIcon
-            label="Horário"
-            name="time_range"
-            value={form.time_range}
+            label="Horário:"
+            name="timeRange"
+            type="time"
+            value={form.timeRange}
             onChange={onChange}
           >
             <ClockIcon />
           </FieldWithIcon>
 
           <FieldWithIcon
-            label="Modalidade"
+            label="Modalidade:"
             name="modality"
             value={form.modality}
             onChange={onChange}
@@ -172,9 +189,9 @@ export default function AdminCourseForm() {
           </FieldWithIcon>
 
           <FieldWithIcon
-            label="Carga horária"
-            name="workload_hours"
-            value={form.workload_hours}
+            label="Carga horária:"
+            name="workloadHours"
+            value={form.workloadHours}
             onChange={onChange}
             type="number"
           >
@@ -182,31 +199,18 @@ export default function AdminCourseForm() {
           </FieldWithIcon>
 
           <FieldWithIcon
-            label="Inclui"
+            label="Atualize anexo:"
             name="includes"
-            value={form.includes}
+            type="file"
             onChange={onChange}
           >
             <DocIcon />
           </FieldWithIcon>
 
-          <div className="pt-2">
-            <label className="block text-sm text-gray-700 mb-1">Status</label>
-            <select
-              name="status"
-              value={form.status}
-              onChange={onChange}
-              className="input"
-            >
-              <option value="published">Publicado</option>
-              <option value="draft">Rascunho</option>
-            </select>
-          </div>
-
-          <div className="pt-3">
+          <div className="btnCreate">
             <button
               type="submit"
-              className="float-right rounded-md bg-[#142825] px-7 py-2.5 text-black hover:bg-[#1c3b36] active:scale-[.99] transition"
+              className="pt-3 float-right rounded-md bg-[#142825] px-7 py-2.5 text-black hover:bg-[#1c3b36] active:scale-[.99] transition"
             >
               {editing ? "Salvar" : "Criar"}
             </button>
@@ -314,3 +318,4 @@ const DocIcon = () => (
     <path d="M14 2v6h6" stroke="#142825" strokeWidth="2" />
   </svg>
 );
+ 

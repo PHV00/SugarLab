@@ -45,12 +45,14 @@ public class AuthController {
             throw new RuntimeException("Credenciais inválidas");
         }
 
-        String token = jwtUtil.generateToken(email);
+        String token = jwtUtil.generateToken(user);
 
         Map<String, Object> response = new HashMap<>();
         response.put("token", token);
         response.put("type", "Bearer");
         response.put("user", user.getNome());
+        response.put("role", user.getEhAdmin());
         return response;
     }
+
 }

@@ -23,6 +23,7 @@ export default function CourseDetailsModal({
   onClose,
   signupHref = "/assinatura",
 }) {
+  
   useEffect(() => {
     const onEsc = (e) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onEsc);
@@ -68,7 +69,8 @@ export default function CourseDetailsModal({
         </button>
 
         {/* Banner */}
-        <div className="relative w-full aspect-[16/4] max-h-[28vh]">
+        {/* <div className="relative w-full aspect-[16/4] max-h-[28vh]"> */}
+        <div className="relative w-full h-1/3 sm:h-1/12 md:h-[220px] overflow-hidden">
           <img
             src={course.thumbnailUrl}
             alt={course.title}
