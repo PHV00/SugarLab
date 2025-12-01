@@ -59,6 +59,18 @@ O objetivo é oferecer uma experiência profissional, simples e didática tanto 
 
 ## 🛠 Requisitos para preparar o ambiente de desenvolvimento
 
+### 🛢️ Configuração do Banco de Dados (MySQL)
+
+1. Certifique-se de que o **MySQL** está instalado e rodando na porta padrão **3306**.
+
+2. Crie o banco de dados:
+   ```sql
+   CREATE DATABASE sugarlab_db;
+   ```
+3. Verifique ou ajuste as credenciais no arquivo **application.properties**
+
+---
+
 ### 🔧 Backend – Spring Boot (Java)
 
 - **Java 17+**
@@ -72,6 +84,7 @@ cd backend
 mvn clean install
 mvn spring-boot:run
 ```
+---
 
 ### 🖥️ Frontend – React
 
@@ -86,13 +99,4 @@ npm ou yarn
 npm install
 npm run dev
 ```
-
-## 🛢️ Configuração do Banco de Dados (MySQL)
-
-1. Certifique-se de que o **MySQL** está instalado e rodando na porta padrão **3306**.
-
-2. Crie o banco de dados:
-   ```sql
-   CREATE DATABASE sugarlab_db;
-   ```
-3. Verifique ou ajuste as credenciais no arquivo **application.properties**
+---
