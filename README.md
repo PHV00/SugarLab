@@ -51,7 +51,7 @@ O **SugarLab** é uma plataforma web de cursos online de confeitaria, criada par
 - **Backend:** Java + Spring Boot  
 - **Frontend:** React  
 - **Arquitetura:** API REST organizada em camadas (Controller, Service, Repository)  
-- **Banco:** H2 (desenvolvimento)
+- **Banco:** MySQL
 
 O objetivo é oferecer uma experiência profissional, simples e didática tanto para quem cria cursos quanto para quem deseja aprender.
 
