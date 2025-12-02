@@ -100,3 +100,72 @@ npm install
 npm run dev
 ```
 ---
+
+## 📷 Imagens do projeto
+
+### Página inicial
+
+Apresenta a proposta da aplicação SugarLab, convidando o usuário
+a conhecer sobre o curso e as demais ferramentas oferecidas;
+
+<img width="446" height="885" alt="image" src="https://github.com/user-attachments/assets/65ee8c30-cf33-4994-b9ad-7f9e9e5784f3" />
+
+### Receita
+
+Lugar onde se pode encontrar diversas formas de fazer doces.
+
+<img width="721" height="897" alt="image" src="https://github.com/user-attachments/assets/2cc308fc-1ca8-41a0-a190-d296f85ae667" />
+
+### Cursos
+
+lista as categorias e opções de cursos disponíveis para compra pelo usuário, bem como os respectivos detalhes de cada curso, como carga horária, nome do professor, principal foco, entre outros;
+
+<img width="3360" height="3562" alt="image" src="https://github.com/user-attachments/assets/42d3c5e6-31fc-44bc-b221-03a680914c40" />
+
+### Comunidade
+
+Espaço para depoimentos, eventos e interação entre os usuários, objetivando não apenas a coleta de feedback, mas também proporcionando a troca de conhecimento entre os alunos;
+
+<img width="505" height="906" alt="image" src="https://github.com/user-attachments/assets/48809520-e64e-4ae7-99d8-db6648ffb950" />
+
+### Sobre nós
+
+Apresenta a equipe de desenvolvedores, os chefes e professores, bem como a história do projeto
+
+<img width="876" height="792" alt="image" src="https://github.com/user-attachments/assets/900ffca7-4001-48da-b0d9-0106db446148" />
+
+### Assinatura
+
+Mostra os diferentes planos disponíveis, seus respectivos preços e formas de pagamento
+
+<img width="3366" height="2354" alt="image" src="https://github.com/user-attachments/assets/0a5e306f-edca-44dd-b0f4-747eb4cd0cb6" />
+
+### Login e Cadastro
+
+Permite que o usuário crie uma conta ou acesse seu perfil já criado previamente;
+
+#### Cadastro
+<img width="3360" height="3150" alt="image" src="https://github.com/user-attachments/assets/2dae7c06-3950-4421-af41-8ecce49d38c5" />
+
+#### Login
+<img width="3360" height="2440" alt="image" src="https://github.com/user-attachments/assets/d1d58553-a2f8-476e-9d52-25e71c4563d9" />
+
+### Gestão Administrativa
+
+Painel de administração da plataforma e gerenciamento da disponibilidade dos cursos. A única pessoa a ter acesso administrador será o dono da aplicação;
+
+#### Criar Curso
+<img width="3360" height="3280" alt="image" src="https://github.com/user-attachments/assets/d9c29121-5f83-4483-8bff-f198ce5edae3" />
+
+#### Visualização dos cursos criados
+<img width="3360" height="3280" alt="image" src="https://github.com/user-attachments/assets/0c609a7f-eee5-4eb5-b185-6f076ed10ec0" />
+
+### Pagamento
+
+Página para finalizar a contratação da assinatura com segurança e realizar o pagamento do plano escolhido;
+
+<img width="1015" height="708" alt="image" src="https://github.com/user-attachments/assets/0ac881ae-5c2f-4897-8ea1-02390cc05f08" />
+
+
+
+
